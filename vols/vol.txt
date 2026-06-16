@@ -1,0 +1,16 @@
+sentry-clickhouse
+sentry-data
+sentry-kafka
+sentry-postgres
+sentry-redis
+sentry-seaweedfs
+sentry-self-hosted_sentry-clickhouse-log
+sentry-self-hosted_sentry-kafka-log
+sentry-self-hosted_sentry-nginx-cache
+sentry-self-hosted_sentry-nginx-www
+sentry-self-hosted_sentry-secrets
+sentry-self-hosted_sentry-smtp
+sentry-self-hosted_sentry-smtp-log
+sentry-self-hosted_sentry-symbolicator
+sentry-self-hosted_sentry-taskbroker
+sentry-self-hosted_sentry-vroom
