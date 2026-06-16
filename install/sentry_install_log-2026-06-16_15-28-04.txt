@@ -1,0 +1,2871 @@
+▶ Parsing command line ...
+
+▶ Detecting container engine ...
+Detected container engine: docker
+
+▶ Detecting Docker platform
+Detected Docker platform is linux/amd64
+
+▶ Initializing Docker|Podman Compose ...
+docker compose --ansi never --env-file .env run --pull=never --rm
+
+▶ Setting up error handling ...
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  2.048kB
+Step 1/4 : FROM debian:bookworm-slim
+ ---> f06a35eff9f9
+Step 2/4 : LABEL MAINTAINER="oss@sentry.io"
+ ---> Using cache
+ ---> 5f5ea952c1d6
+Step 3/4 : RUN set -x   && apt-get update   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends jq   && apt-get clean   && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 84e82c67f694
+Step 4/4 : ENTRYPOINT ["jq"]
+ ---> Using cache
+ ---> b751a9423d4f
+Successfully built b751a9423d4f
+Successfully tagged sentry-self-hosted-jq-local:latest
+
+Hey, so ... we would love to automatically find out about issues with your
+Sentry instance so that we can improve the product. Turns out there is an app
+for that, called Sentry. Would you be willing to let us automatically send data
+about your instance upstream to Sentry for development and debugging purposes?
+
+  y / yes / 1
+  n / no / 0
+
+(Btw, we send this to our own self-hosted Sentry instance, not to Sentry SaaS,
+so that we can be in this together.)
+
+Here's the info we may collect:
+
+  - OS username
+  - IP address
+  - install log
+  - runtime errors
+  - performance data
+
+Thirty (30) day retention. No marketing. Privacy policy at sentry.io/privacy.
+
+y or n? 
+Thank you. To avoid this prompt in the future, use one of these flags:
+
+  --report-self-hosted-issues
+  --no-report-self-hosted-issues
+
+or set the REPORT_SELF_HOSTED_ISSUES environment variable:
+
+  REPORT_SELF_HOSTED_ISSUES=1 to send data
+  REPORT_SELF_HOSTED_ISSUES=0 to not send data
+
+latest: Pulling from getsentry/sentry-cli
+fe07684b16b8: Pulling fs layer
+1abd1bab778e: Pulling fs layer
+6fe106d3cdf4: Pulling fs layer
+39bfe9dcd4fa: Pulling fs layer
+5bbc295b5310: Pulling fs layer
+39bfe9dcd4fa: Waiting
+5bbc295b5310: Waiting
+1abd1bab778e: Verifying Checksum
+1abd1bab778e: Download complete
+6fe106d3cdf4: Verifying Checksum
+6fe106d3cdf4: Download complete
+fe07684b16b8: Verifying Checksum
+fe07684b16b8: Download complete
+fe07684b16b8: Pull complete
+1abd1bab778e: Pull complete
+6fe106d3cdf4: Pull complete
+39bfe9dcd4fa: Verifying Checksum
+39bfe9dcd4fa: Download complete
+39bfe9dcd4fa: Pull complete
+5bbc295b5310: Download complete
+5bbc295b5310: Pull complete
+Digest: sha256:e9adf752d070083ad613017dc1a7c2826444b31f09575ad0fee22d7c6b50e255
+Status: Downloaded newer image for getsentry/sentry-cli:latest
+docker.io/getsentry/sentry-cli:latest
+
+▶ Checking for latest commit ... 
+skipped
+
+▶ Checking minimum requirements ...
+Found docker version 28.2.2
+Found docker Compose version 2.37.1+ds1-0ubuntu2
+
+▶ Upgrading Clickhouse ...
+
+▶ Cleaning up ClickHouse query log tables ...
+ Container sentry-self-hosted-clickhouse-1  Recreate
+ Container sentry-self-hosted-clickhouse-1  Recreated
+ Container sentry-self-hosted-clickhouse-1  Starting
+ Container sentry-self-hosted-clickhouse-1  Started
+ Container sentry-self-hosted-clickhouse-1  Waiting
+ Container sentry-self-hosted-clickhouse-1  Healthy
+system.query_log_0 does not exist, skipping.
+system.query_views_log_0 does not exist, skipping.
+Truncating system.query_log and system.query_views_log ...
+
+▶ Fetching and updating docker images ...
+ snuba-group-attributes-consumer Skipped 
+ snuba-subscription-consumer-events Skipped 
+ snuba-metrics-consumer Skipped 
+ web Skipped 
+ symbolicator Skipped 
+ billing-metrics-consumer Skipped 
+ subscription-consumer-events Skipped 
+ snuba-replays-consumer Skipped 
+ snuba-subscription-consumer-generic-metrics-counters Skipped 
+ post-process-forwarder-transactions Skipped 
+ post-process-forwarder-errors Skipped 
+ snuba-transactions-consumer Skipped 
+ ingest-occurrences Skipped 
+ uptime-checker Skipped 
+ transactions-consumer Skipped 
+ ingest-monitors Skipped 
+ snuba-subscription-consumer-transactions Skipped 
+ redis Pulling 
+ kafka Pulling 
+ pgbouncer Pulling 
+ nginx Pulling 
+ subscription-consumer-generic-metrics Skipped 
+ ingest-feedback-events Skipped 
+ snuba-outcomes-consumer Skipped 
+ snuba-generic-metrics-distributions-consumer Skipped 
+ taskbroker Skipped 
+ snuba-outcomes-billing-consumer Skipped 
+ process-spans Skipped 
+ snuba-replacer Skipped 
+ uptime-results Skipped 
+ snuba-generic-metrics-sets-consumer Skipped 
+ seaweedfs-worker Skipped - Image is already being pulled by seaweedfs-admin 
+ generic-metrics-consumer Skipped 
+ attachments-consumer Skipped 
+ snuba-errors-consumer Skipped 
+ monitors-clock-tick Skipped 
+ snuba-subscription-consumer-metrics Skipped 
+ snuba-issue-occurrence-consumer Skipped 
+ ingest-replay-recordings Skipped 
+ events-consumer Skipped 
+ metrics-consumer Skipped 
+ snuba-profiling-profile-chunks-consumer Skipped 
+ postgres Pulling 
+ symbolicator-cleanup Pulling 
+ snuba-api Skipped 
+ relay Skipped 
+ launchpad-taskworker Skipped 
+ memcached Pulling 
+ snuba-profiling-profiles-consumer Skipped 
+ subscription-consumer-eap-items Skipped 
+ process-segments Skipped 
+ snuba-profiling-functions-consumer Skipped 
+ subscription-consumer-metrics Skipped 
+ taskscheduler Skipped 
+ seaweedfs-admin Pulling 
+ sentry-cleanup Skipped 
+ taskworker Skipped 
+ snuba-subscription-consumer-generic-metrics-gauges Skipped 
+ ingest-profiles Skipped 
+ snuba-generic-metrics-counters-consumer Skipped 
+ seaweedfs Skipped - Image is already being pulled by seaweedfs-admin 
+ snuba-subscription-consumer-generic-metrics-distributions Skipped 
+ snuba-generic-metrics-gauges-consumer Skipped 
+ subscription-consumer-transactions Skipped 
+ clickhouse Skipped 
+ monitors-clock-tasks Skipped 
+ vroom Skipped 
+ snuba-subscription-consumer-generic-metrics-sets Skipped 
+ snuba-subscription-consumer-eap-items Skipped 
+ snuba-eap-items-consumer Skipped 
+ post-process-forwarder-issue-platform Skipped 
+ smtp Pulling 
+ seaweedfs-admin Pulled 
+ pgbouncer Pulled 
+ redis Pulled 
+ kafka Pulled 
+ nginx Pulled 
+ memcached Pulled 
+ 875ea9878944 Pulling fs layer 
+ 990a9c434e5e Pulling fs layer 
+ 39dc083afc39 Pulling fs layer 
+ bf7a4185f015 Pulling fs layer 
+ 2780920e5dbf Pulling fs layer 
+ 7c12895b777b Pulling fs layer 
+ 3214acf345c0 Pulling fs layer 
+ 52630fc75a18 Pulling fs layer 
+ dd64bf2dd177 Pulling fs layer 
+ b839dfae01f6 Pulling fs layer 
+ dcaa5a89b0cc Pulling fs layer 
+ 069d1e267530 Pulling fs layer 
+ 2780920e5dbf Waiting 
+ 235c3625d753 Pulling fs layer 
+ 7c12895b777b Waiting 
+ dc0fb75e565a Pulling fs layer 
+ 336f6c853c4e Pulling fs layer 
+ 3214acf345c0 Waiting 
+ 1e8acdaa2607 Pulling fs layer 
+ 52630fc75a18 Waiting 
+ a812c900745e Pulling fs layer 
+ dd64bf2dd177 Waiting 
+ b839dfae01f6 Waiting 
+ b16bb3b2bd07 Pulling fs layer 
+ 9dc168c99b16 Pulling fs layer 
+ dcaa5a89b0cc Waiting 
+ e8bb92bb886c Pulling fs layer 
+ 069d1e267530 Waiting 
+ 336f6c853c4e Waiting 
+ 96d49975b609 Pulling fs layer 
+ 1e8acdaa2607 Waiting 
+ 235c3625d753 Waiting 
+ dc0fb75e565a Waiting 
+ b16bb3b2bd07 Waiting 
+ 9dc168c99b16 Waiting 
+ a812c900745e Waiting 
+ 96d49975b609 Waiting 
+ e8bb92bb886c Waiting 
+ 990a9c434e5e Downloading [=====>                                             ]  1.378kB/12.48kB
+ 990a9c434e5e Verifying Checksum 
+ 990a9c434e5e Download complete 
+ 39dc083afc39 Downloading [>                                                  ]  5.512kB/445.7kB
+ 875ea9878944 Downloading [>                                                  ]  1.378kB/83.87kB
+ 875ea9878944 Downloading [==================================================>]  83.87kB/83.87kB
+ 875ea9878944 Verifying Checksum 
+ 875ea9878944 Download complete 
+ 875ea9878944 Extracting [===================>                               ]  32.77kB/83.87kB
+ 875ea9878944 Extracting [==================================================>]  83.87kB/83.87kB
+ 875ea9878944 Extracting [==================================================>]  83.87kB/83.87kB
+ 875ea9878944 Pull complete 
+ 39dc083afc39 Downloading [==============>                                    ]  131.1kB/445.7kB
+ 990a9c434e5e Extracting [==================================================>]  12.48kB/12.48kB
+ 990a9c434e5e Extracting [==================================================>]  12.48kB/12.48kB
+ 990a9c434e5e Pull complete 
+ 39dc083afc39 Downloading [============================================>      ]  393.2kB/445.7kB
+ 39dc083afc39 Verifying Checksum 
+ 39dc083afc39 Download complete 
+ 39dc083afc39 Extracting [===>                                               ]  32.77kB/445.7kB
+ 39dc083afc39 Extracting [==================================================>]  445.7kB/445.7kB
+ 39dc083afc39 Extracting [==================================================>]  445.7kB/445.7kB
+ 39dc083afc39 Pull complete 
+ bf7a4185f015 Downloading [==>                                                ]  1.378kB/29kB
+ bf7a4185f015 Verifying Checksum 
+ bf7a4185f015 Download complete 
+ bf7a4185f015 Extracting [==================================================>]     29kB/29kB
+ bf7a4185f015 Extracting [==================================================>]     29kB/29kB
+ bf7a4185f015 Pull complete 
+ 2780920e5dbf Downloading [==================================================>]      67B/67B
+ 2780920e5dbf Verifying Checksum 
+ 2780920e5dbf Download complete 
+ 2780920e5dbf Extracting [==================================================>]      67B/67B
+ 2780920e5dbf Extracting [==================================================>]      67B/67B
+ 2780920e5dbf Pull complete 
+ 7c12895b777b Downloading [==================================================>]     188B/188B
+ 7c12895b777b Verifying Checksum 
+ 7c12895b777b Download complete 
+ 7c12895b777b Extracting [==================================================>]     188B/188B
+ 7c12895b777b Extracting [==================================================>]     188B/188B
+ 7c12895b777b Pull complete 
+ b9136609bef0 Pulling fs layer 
+ 07800c4658aa Pulling fs layer 
+ d3b29a572ab1 Pulling fs layer 
+ 9c32480c36e2 Pulling fs layer 
+ ab0222f6080d Pulling fs layer 
+ b9136609bef0 Waiting 
+ 26068876c106 Pulling fs layer 
+ 204ea99b8184 Pulling fs layer 
+ 07800c4658aa Waiting 
+ 9c32480c36e2 Waiting 
+ d3b29a572ab1 Waiting 
+ ab0222f6080d Waiting 
+ b9b7e4c43bc2 Pulling fs layer 
+ 26068876c106 Waiting 
+ 204ea99b8184 Waiting 
+ e33c2b4cdc8b Pulling fs layer 
+ b9b7e4c43bc2 Waiting 
+ d9549c12130e Pulling fs layer 
+ e33c2b4cdc8b Waiting 
+ d56c3b750562 Pulling fs layer 
+ 87928eec8783 Pulling fs layer 
+ d9549c12130e Waiting 
+ f08423e428bc Pulling fs layer 
+ 3d66db7b9447 Pulling fs layer 
+ 87928eec8783 Waiting 
+ d56c3b750562 Waiting 
+ f08423e428bc Waiting 
+ 3d66db7b9447 Waiting 
+ 3214acf345c0 Downloading [==================================================>]     123B/123B
+ 3214acf345c0 Verifying Checksum 
+ 3214acf345c0 Download complete 
+ 3214acf345c0 Extracting [==================================================>]     123B/123B
+ 3214acf345c0 Extracting [==================================================>]     123B/123B
+ 3214acf345c0 Pull complete 
+ 52630fc75a18 Downloading [==================================================>]     162B/162B
+ 52630fc75a18 Verifying Checksum 
+ 52630fc75a18 Download complete 
+ 52630fc75a18 Extracting [==================================================>]     162B/162B
+ 52630fc75a18 Extracting [==================================================>]     162B/162B
+ 52630fc75a18 Pull complete 
+ dd64bf2dd177 Downloading [==================================================>]      80B/80B
+ dd64bf2dd177 Extracting [==================================================>]      80B/80B
+ dd64bf2dd177 Extracting [==================================================>]      80B/80B
+ dd64bf2dd177 Pull complete 
+ b839dfae01f6 Downloading [==================================================>]     351B/351B
+ b839dfae01f6 Verifying Checksum 
+ b839dfae01f6 Download complete 
+ b839dfae01f6 Extracting [==================================================>]     351B/351B
+ b839dfae01f6 Extracting [==================================================>]     351B/351B
+ b839dfae01f6 Pull complete 
+ dcaa5a89b0cc Downloading [==================================================>]     314B/314B
+ dcaa5a89b0cc Verifying Checksum 
+ dcaa5a89b0cc Download complete 
+ dcaa5a89b0cc Extracting [==================================================>]     314B/314B
+ dcaa5a89b0cc Extracting [==================================================>]     314B/314B
+ dcaa5a89b0cc Pull complete 
+ 069d1e267530 Downloading [>                                                  ]  1.378kB/131.9kB
+ 069d1e267530 Downloading [================================================>  ]  129.1kB/131.9kB
+ 069d1e267530 Downloading [==================================================>]  131.9kB/131.9kB
+ 069d1e267530 Verifying Checksum 
+ 069d1e267530 Download complete 
+ 069d1e267530 Extracting [============>                                      ]  32.77kB/131.9kB
+ 069d1e267530 Extracting [==================================================>]  131.9kB/131.9kB
+ 069d1e267530 Pull complete 
+ 235c3625d753 Downloading [>                                                  ]  65.54kB/4.951MB
+ dc0fb75e565a Downloading [>                                                  ]  26.18kB/2.507MB
+ 235c3625d753 Downloading [==>                                                ]  262.1kB/4.951MB
+ dc0fb75e565a Downloading [===>                                               ]  163.8kB/2.507MB
+ 235c3625d753 Downloading [=====>                                             ]  583.5kB/4.951MB
+ 336f6c853c4e Downloading [>                                                  ]  1.378kB/133.5kB
+ dc0fb75e565a Downloading [=======>                                           ]  393.2kB/2.507MB
+ 235c3625d753 Downloading [===========>                                       ]  1.173MB/4.951MB
+ 336f6c853c4e Downloading [==========================================>        ]  114.7kB/133.5kB
+ dc0fb75e565a Downloading [=========>                                         ]  452.4kB/2.507MB
+ 336f6c853c4e Downloading [==================================================>]  133.5kB/133.5kB
+ 336f6c853c4e Download complete 
+ 235c3625d753 Downloading [===================>                               ]  1.957MB/4.951MB
+ dc0fb75e565a Downloading [================>                                  ]  845.6kB/2.507MB
+ 235c3625d753 Downloading [==========================>                        ]  2.612MB/4.951MB
+ dc0fb75e565a Downloading [======================>                            ]  1.108MB/2.507MB
+ 235c3625d753 Downloading [=================================>                 ]  3.328MB/4.951MB
+ dc0fb75e565a Downloading [===========================>                       ]  1.367MB/2.507MB
+ 235c3625d753 Downloading [========================================>          ]  4.049MB/4.951MB
+ dc0fb75e565a Downloading [================================>                  ]  1.629MB/2.507MB
+ 235c3625d753 Downloading [================================================>  ]   4.77MB/4.951MB
+ 235c3625d753 Downloading [==================================================>]  4.951MB/4.951MB
+ 235c3625d753 Verifying Checksum 
+ 235c3625d753 Download complete 
+ 235c3625d753 Extracting [>                                                  ]  65.54kB/4.951MB
+ dc0fb75e565a Downloading [=====================================>             ]  1.892MB/2.507MB
+ 235c3625d753 Extracting [==================================================>]  4.951MB/4.951MB
+ 235c3625d753 Pull complete 
+ dc0fb75e565a Downloading [==========================================>        ]  2.151MB/2.507MB
+ dc0fb75e565a Downloading [================================================>  ]  2.413MB/2.507MB
+ 1e8acdaa2607 Downloading [>                                                  ]  8.268kB/779.5kB
+ dc0fb75e565a Downloading [==================================================>]  2.507MB/2.507MB
+ dc0fb75e565a Verifying Checksum 
+ dc0fb75e565a Download complete 
+ dc0fb75e565a Extracting [>                                                  ]  32.77kB/2.507MB
+ dc0fb75e565a Extracting [==================================================>]  2.507MB/2.507MB
+ dc0fb75e565a Pull complete 
+ 336f6c853c4e Extracting [============>                                      ]  32.77kB/133.5kB
+ 336f6c853c4e Extracting [==================================================>]  133.5kB/133.5kB
+ 336f6c853c4e Extracting [==================================================>]  133.5kB/133.5kB
+ 336f6c853c4e Pull complete 
+ 1e8acdaa2607 Downloading [========>                                          ]  131.1kB/779.5kB
+ 1e8acdaa2607 Downloading [=========================>                         ]  393.2kB/779.5kB
+ 1e8acdaa2607 Downloading [==================================================>]  779.5kB/779.5kB
+ 1e8acdaa2607 Verifying Checksum 
+ 1e8acdaa2607 Download complete 
+ 1e8acdaa2607 Extracting [==>                                                ]  32.77kB/779.5kB
+ 1e8acdaa2607 Extracting [==================================================>]  779.5kB/779.5kB
+ 1e8acdaa2607 Extracting [==================================================>]  779.5kB/779.5kB
+ 1e8acdaa2607 Pull complete 
+ a812c900745e Downloading [=>                                                 ]  1.378kB/57.2kB
+ a812c900745e Verifying Checksum 
+ a812c900745e Download complete 
+ a812c900745e Extracting [============================>                      ]  32.77kB/57.2kB
+ a812c900745e Extracting [==================================================>]   57.2kB/57.2kB
+ a812c900745e Extracting [==================================================>]   57.2kB/57.2kB
+ a812c900745e Pull complete 
+ b16bb3b2bd07 Downloading [=>                                                 ]  1.378kB/40.31kB
+ b16bb3b2bd07 Downloading [==================================================>]  40.31kB/40.31kB
+ b16bb3b2bd07 Verifying Checksum 
+ b16bb3b2bd07 Download complete 
+ b16bb3b2bd07 Extracting [========================================>          ]  32.77kB/40.31kB
+ b16bb3b2bd07 Extracting [==================================================>]  40.31kB/40.31kB
+ b16bb3b2bd07 Pull complete 
+ 9dc168c99b16 Downloading [==================================================>]     132B/132B
+ 9dc168c99b16 Verifying Checksum 
+ 9dc168c99b16 Extracting [==================================================>]     132B/132B
+ 9dc168c99b16 Extracting [==================================================>]     132B/132B
+ 9dc168c99b16 Pull complete 
+ e8bb92bb886c Downloading [==================================================>]      88B/88B
+ e8bb92bb886c Verifying Checksum 
+ e8bb92bb886c Download complete 
+ e8bb92bb886c Extracting [==================================================>]      88B/88B
+ e8bb92bb886c Extracting [==================================================>]      88B/88B
+ e8bb92bb886c Pull complete 
+ 96d49975b609 Downloading [>                                                  ]  539.2kB/73.06MB
+ 96d49975b609 Downloading [>                                                  ]   1.08MB/73.06MB
+ b9136609bef0 Downloading [>                                                  ]  294.3kB/28.24MB
+ b9136609bef0 Downloading [==>                                                ]  1.179MB/28.24MB
+ b9136609bef0 Downloading [===>                                               ]  2.064MB/28.24MB
+ 96d49975b609 Downloading [=>                                                 ]  1.621MB/73.06MB
+ b9136609bef0 Downloading [=====>                                             ]  2.949MB/28.24MB
+ 96d49975b609 Downloading [=>                                                 ]  2.161MB/73.06MB
+ b9136609bef0 Downloading [=======>                                           ]  4.128MB/28.24MB
+ a8ae27853590 Already exists 
+ 1e8e07dae4a0 Pulling fs layer 
+ 1e8e07dae4a0 Waiting 
+ 07800c4658aa Downloading [==================================================>]  1.167kB/1.167kB
+ 07800c4658aa Verifying Checksum 
+ 07800c4658aa Download complete 
+ b9136609bef0 Downloading [========>                                          ]  5.013MB/28.24MB
+ b9136609bef0 Downloading [==========>                                        ]  6.193MB/28.24MB
+ 96d49975b609 Downloading [==>                                                ]  3.237MB/73.06MB
+ b9136609bef0 Downloading [=============>                                     ]  7.372MB/28.24MB
+ b9136609bef0 Downloading [===============>                                   ]  8.552MB/28.24MB
+ b9136609bef0 Downloading [=================>                                 ]  9.731MB/28.24MB
+ b9136609bef0 Downloading [===================>                               ]  10.91MB/28.24MB
+ b9136609bef0 Downloading [=====================>                             ]  12.09MB/28.24MB
+ d3b29a572ab1 Downloading [>                                                  ]  48.55kB/4.534MB
+ b9136609bef0 Downloading [=======================>                           ]  13.27MB/28.24MB
+ 96d49975b609 Downloading [==>                                                ]  3.768MB/73.06MB
+ d3b29a572ab1 Downloading [=====>                                             ]  490.3kB/4.534MB
+ b9136609bef0 Downloading [=========================>                         ]  14.16MB/28.24MB
+ d3b29a572ab1 Downloading [=========>                                         ]  844.2kB/4.534MB
+ b9136609bef0 Downloading [==========================>                        ]  15.04MB/28.24MB
+ d3b29a572ab1 Downloading [=============>                                     ]  1.237MB/4.534MB
+ b9136609bef0 Downloading [============================>                      ]  15.92MB/28.24MB
+ d3b29a572ab1 Downloading [=================>                                 ]  1.631MB/4.534MB
+ b9136609bef0 Downloading [=============================>                     ]  16.81MB/28.24MB
+ d3b29a572ab1 Downloading [======================>                            ]  2.024MB/4.534MB
+ b9136609bef0 Downloading [===============================>                   ]  17.69MB/28.24MB
+ d3b29a572ab1 Downloading [============================>                      ]  2.565MB/4.534MB
+ b9136609bef0 Downloading [================================>                  ]  18.28MB/28.24MB
+ d3b29a572ab1 Downloading [==================================>                ]  3.154MB/4.534MB
+ b9136609bef0 Downloading [=================================>                 ]  18.87MB/28.24MB
+ d3b29a572ab1 Downloading [=========================================>         ]  3.793MB/4.534MB
+ d3b29a572ab1 Downloading [================================================>  ]  4.432MB/4.534MB
+ d3b29a572ab1 Verifying Checksum 
+ d3b29a572ab1 Download complete 
+ b9136609bef0 Downloading [==================================>                ]  19.46MB/28.24MB
+ b9136609bef0 Downloading [====================================>              ]  20.64MB/28.24MB
+ b9136609bef0 Downloading [======================================>            ]  21.82MB/28.24MB
+ b9136609bef0 Downloading [========================================>          ]     23MB/28.24MB
+ b9136609bef0 Downloading [==========================================>        ]  24.18MB/28.24MB
+ b9136609bef0 Downloading [============================================>      ]  25.36MB/28.24MB
+ b9136609bef0 Downloading [==============================================>    ]  26.54MB/28.24MB
+ 96d49975b609 Downloading [==>                                                ]  4.309MB/73.06MB
+ b9136609bef0 Downloading [=================================================> ]  27.72MB/28.24MB
+ b9136609bef0 Verifying Checksum 
+ b9136609bef0 Download complete 
+ 9c32480c36e2 Downloading [>                                                  ]  16.38kB/1.249MB
+ b9136609bef0 Extracting [>                                                  ]  294.9kB/28.24MB
+ 9c32480c36e2 Downloading [==========================================>        ]  1.058MB/1.249MB
+ 9c32480c36e2 Verifying Checksum 
+ 9c32480c36e2 Download complete 
+ b9136609bef0 Extracting [==============>                                    ]  8.258MB/28.24MB
+ b9136609bef0 Extracting [=====================>                             ]  12.39MB/28.24MB
+ b9136609bef0 Extracting [========================================>          ]  22.71MB/28.24MB
+ b9136609bef0 Extracting [==========================================>        ]  23.89MB/28.24MB
+ b9136609bef0 Extracting [================================================>  ]  27.13MB/28.24MB
+ ab0222f6080d Downloading [>                                                  ]  81.92kB/8.066MB
+ b9136609bef0 Extracting [================================================>  ]  27.43MB/28.24MB
+ b9136609bef0 Extracting [==================================================>]  28.24MB/28.24MB
+ ab0222f6080d Downloading [=======>                                           ]  1.277MB/8.066MB
+ 26068876c106 Downloading [>                                                  ]  16.38kB/1.196MB
+ b9136609bef0 Pull complete 
+ 07800c4658aa Extracting [==================================================>]  1.167kB/1.167kB
+ 07800c4658aa Extracting [==================================================>]  1.167kB/1.167kB
+ 07800c4658aa Pull complete 
+ d3b29a572ab1 Extracting [>                                                  ]  65.54kB/4.534MB
+ d3b29a572ab1 Extracting [==================================================>]  4.534MB/4.534MB
+ ab0222f6080d Downloading [===========>                                       ]  1.932MB/8.066MB
+ d3b29a572ab1 Pull complete 
+ 9c32480c36e2 Extracting [=>                                                 ]  32.77kB/1.249MB
+ 26068876c106 Downloading [===================>                               ]  473.9kB/1.196MB
+ 9c32480c36e2 Extracting [==================================================>]  1.249MB/1.249MB
+ 9c32480c36e2 Pull complete 
+ ab0222f6080d Downloading [=================>                                 ]  2.751MB/8.066MB
+ 26068876c106 Downloading [==========================================>        ]  1.014MB/1.196MB
+ 26068876c106 Verifying Checksum 
+ 26068876c106 Download complete 
+ ab0222f6080d Downloading [=====================>                             ]  3.489MB/8.066MB
+ ab0222f6080d Downloading [===========================>                       ]   4.39MB/8.066MB
+ ab0222f6080d Downloading [==================================>                ]  5.537MB/8.066MB
+ ab0222f6080d Downloading [=========================================>         ]  6.683MB/8.066MB
+ ab0222f6080d Downloading [================================================>  ]   7.83MB/8.066MB
+ ab0222f6080d Verifying Checksum 
+ ab0222f6080d Download complete 
+ ab0222f6080d Extracting [>                                                  ]   98.3kB/8.066MB
+ 96d49975b609 Downloading [===>                                               ]  4.849MB/73.06MB
+ ab0222f6080d Extracting [=============================>                     ]  4.817MB/8.066MB
+ ab0222f6080d Extracting [==================================================>]  8.066MB/8.066MB
+ ab0222f6080d Pull complete 
+ 26068876c106 Extracting [=>                                                 ]  32.77kB/1.196MB
+ 204ea99b8184 Downloading [==================================================>]     116B/116B
+ 204ea99b8184 Verifying Checksum 
+ 204ea99b8184 Download complete 
+ 26068876c106 Extracting [==================================================>]  1.196MB/1.196MB
+ 26068876c106 Extracting [==================================================>]  1.196MB/1.196MB
+ 26068876c106 Pull complete 
+ 204ea99b8184 Extracting [==================================================>]     116B/116B
+ 204ea99b8184 Extracting [==================================================>]     116B/116B
+ 204ea99b8184 Pull complete 
+ b9b7e4c43bc2 Downloading [==================================================>]  3.144kB/3.144kB
+ b9b7e4c43bc2 Verifying Checksum 
+ b9b7e4c43bc2 Download complete 
+ b9b7e4c43bc2 Extracting [==================================================>]  3.144kB/3.144kB
+ b9b7e4c43bc2 Extracting [==================================================>]  3.144kB/3.144kB
+ b9b7e4c43bc2 Pull complete 
+ e33c2b4cdc8b Downloading [>                                                  ]  539.4kB/108.6MB
+ 96d49975b609 Downloading [===>                                               ]   5.39MB/73.06MB
+ e33c2b4cdc8b Downloading [>                                                  ]  2.146MB/108.6MB
+ e33c2b4cdc8b Downloading [=>                                                 ]  3.756MB/108.6MB
+ e33c2b4cdc8b Downloading [==>                                                ]  5.375MB/108.6MB
+ d9549c12130e Downloading [==================>                                ]  3.502kB/9.526kB
+ d9549c12130e Downloading [==================================================>]  9.526kB/9.526kB
+ d9549c12130e Verifying Checksum 
+ d9549c12130e Download complete 
+ e33c2b4cdc8b Downloading [===>                                               ]   6.99MB/108.6MB
+ e33c2b4cdc8b Downloading [===>                                               ]  8.596MB/108.6MB
+ e33c2b4cdc8b Downloading [====>                                              ]  10.21MB/108.6MB
+ e33c2b4cdc8b Downloading [=====>                                             ]  11.84MB/108.6MB
+ 96d49975b609 Downloading [====>                                              ]  5.931MB/73.06MB
+ e33c2b4cdc8b Downloading [======>                                            ]  13.46MB/108.6MB
+ d56c3b750562 Downloading [==================================================>]     128B/128B
+ d56c3b750562 Verifying Checksum 
+ d56c3b750562 Download complete 
+ e33c2b4cdc8b Downloading [======>                                            ]  15.07MB/108.6MB
+ e33c2b4cdc8b Downloading [=======>                                           ]  16.69MB/108.6MB
+ e33c2b4cdc8b Downloading [========>                                          ]  18.31MB/108.6MB
+ e33c2b4cdc8b Downloading [=========>                                         ]  19.92MB/108.6MB
+ e33c2b4cdc8b Downloading [=========>                                         ]  21.54MB/108.6MB
+ 96d49975b609 Downloading [====>                                              ]  6.471MB/73.06MB
+ 87928eec8783 Downloading [==================================================>]     168B/168B
+ 87928eec8783 Verifying Checksum 
+ 87928eec8783 Download complete 
+ e33c2b4cdc8b Downloading [==========>                                        ]  23.16MB/108.6MB
+ e33c2b4cdc8b Downloading [===========>                                       ]  24.78MB/108.6MB
+ e33c2b4cdc8b Downloading [============>                                      ]  26.39MB/108.6MB
+ e33c2b4cdc8b Downloading [============>                                      ]  27.47MB/108.6MB
+ 96d49975b609 Downloading [====>                                              ]  7.012MB/73.06MB
+ e33c2b4cdc8b Downloading [=============>                                     ]  28.55MB/108.6MB
+ e33c2b4cdc8b Downloading [=============>                                     ]  29.63MB/108.6MB
+ f08423e428bc Downloading [==================================================>]  6.095kB/6.095kB
+ f08423e428bc Verifying Checksum 
+ f08423e428bc Download complete 
+ e33c2b4cdc8b Downloading [==============>                                    ]   30.7MB/108.6MB
+ e33c2b4cdc8b Downloading [==============>                                    ]  31.78MB/108.6MB
+ e33c2b4cdc8b Downloading [===============>                                   ]  32.86MB/108.6MB
+ 96d49975b609 Downloading [=====>                                             ]   7.55MB/73.06MB
+ e33c2b4cdc8b Downloading [===============>                                   ]  33.94MB/108.6MB
+ e33c2b4cdc8b Downloading [================>                                  ]  35.02MB/108.6MB
+ e33c2b4cdc8b Downloading [================>                                  ]   36.1MB/108.6MB
+ e33c2b4cdc8b Downloading [=================>                                 ]  37.18MB/108.6MB
+ 3d66db7b9447 Downloading [==================================================>]     186B/186B
+ 3d66db7b9447 Download complete 
+ e33c2b4cdc8b Downloading [=================>                                 ]  38.26MB/108.6MB
+ 96d49975b609 Downloading [=====>                                             ]   8.09MB/73.06MB
+ e33c2b4cdc8b Downloading [==================>                                ]  39.34MB/108.6MB
+ e33c2b4cdc8b Downloading [==================>                                ]  40.42MB/108.6MB
+ e33c2b4cdc8b Downloading [===================>                               ]   41.5MB/108.6MB
+ e33c2b4cdc8b Downloading [===================>                               ]  42.58MB/108.6MB
+ 96d49975b609 Downloading [=====>                                             ]  8.631MB/73.06MB
+ e33c2b4cdc8b Downloading [====================>                              ]  43.66MB/108.6MB
+ e33c2b4cdc8b Downloading [====================>                              ]  44.74MB/108.6MB
+ 1e8e07dae4a0 Downloading [>                                                  ]  264.9kB/26.43MB
+ e33c2b4cdc8b Downloading [=====================>                             ]  45.82MB/108.6MB
+ 1e8e07dae4a0 Downloading [=>                                                 ]  794.7kB/26.43MB
+ 1e8e07dae4a0 Downloading [==>                                                ]  1.327MB/26.43MB
+ 96d49975b609 Downloading [======>                                            ]  9.172MB/73.06MB
+ e33c2b4cdc8b Downloading [=====================>                             ]   46.9MB/108.6MB
+ 1e8e07dae4a0 Downloading [====>                                              ]  2.163MB/26.43MB
+ 1e8e07dae4a0 Downloading [=====>                                             ]  2.998MB/26.43MB
+ e33c2b4cdc8b Downloading [======================>                            ]  47.99MB/108.6MB
+ e33c2b4cdc8b Downloading [======================>                            ]  48.53MB/108.6MB
+ 1e8e07dae4a0 Downloading [=======>                                           ]  3.834MB/26.43MB
+ e33c2b4cdc8b Downloading [======================>                            ]  49.07MB/108.6MB
+ 1e8e07dae4a0 Downloading [========>                                          ]  4.669MB/26.43MB
+ 96d49975b609 Downloading [======>                                            ]  9.712MB/73.06MB
+ e33c2b4cdc8b Downloading [======================>                            ]  49.61MB/108.6MB
+ 1e8e07dae4a0 Downloading [=========>                                         ]  5.226MB/26.43MB
+ 1e8e07dae4a0 Downloading [==========>                                        ]  5.784MB/26.43MB
+ e33c2b4cdc8b Downloading [=======================>                           ]  50.69MB/108.6MB
+ 1e8e07dae4a0 Downloading [===========>                                       ]  6.341MB/26.43MB
+ 1e8e07dae4a0 Downloading [=============>                                     ]  6.898MB/26.43MB
+ e33c2b4cdc8b Downloading [=======================>                           ]  51.77MB/108.6MB
+ 1e8e07dae4a0 Downloading [==============>                                    ]  7.455MB/26.43MB
+ e33c2b4cdc8b Downloading [========================>                          ]  52.85MB/108.6MB
+ 1e8e07dae4a0 Downloading [===============>                                   ]  8.012MB/26.43MB
+ 96d49975b609 Downloading [=======>                                           ]  10.25MB/73.06MB
+ 1e8e07dae4a0 Downloading [================>                                  ]  8.569MB/26.43MB
+ e33c2b4cdc8b Downloading [========================>                          ]  53.93MB/108.6MB
+ 1e8e07dae4a0 Downloading [=================>                                 ]  9.126MB/26.43MB
+ 1e8e07dae4a0 Downloading [==================>                                ]  9.683MB/26.43MB
+ e33c2b4cdc8b Downloading [=========================>                         ]  55.01MB/108.6MB
+ 1e8e07dae4a0 Downloading [===================>                               ]  10.24MB/26.43MB
+ e33c2b4cdc8b Downloading [=========================>                         ]   56.1MB/108.6MB
+ 1e8e07dae4a0 Downloading [====================>                              ]   10.8MB/26.43MB
+ 96d49975b609 Downloading [=======>                                           ]  10.79MB/73.06MB
+ e33c2b4cdc8b Downloading [==========================>                        ]  57.18MB/108.6MB
+ 1e8e07dae4a0 Downloading [=====================>                             ]  11.35MB/26.43MB
+ e33c2b4cdc8b Downloading [==========================>                        ]  58.26MB/108.6MB
+ 1e8e07dae4a0 Downloading [======================>                            ]  11.91MB/26.43MB
+ e33c2b4cdc8b Downloading [===========================>                       ]  59.34MB/108.6MB
+ 1e8e07dae4a0 Downloading [=======================>                           ]  12.47MB/26.43MB
+ e33c2b4cdc8b Downloading [===========================>                       ]  60.42MB/108.6MB
+ 1e8e07dae4a0 Downloading [========================>                          ]  13.03MB/26.43MB
+ 1e8e07dae4a0 Downloading [=========================>                         ]  13.58MB/26.43MB
+ e33c2b4cdc8b Downloading [============================>                      ]   61.5MB/108.6MB
+ 1e8e07dae4a0 Downloading [==========================>                        ]  14.14MB/26.43MB
+ e33c2b4cdc8b Downloading [============================>                      ]  62.58MB/108.6MB
+ 1e8e07dae4a0 Downloading [===========================>                       ]   14.7MB/26.43MB
+ e33c2b4cdc8b Downloading [=============================>                     ]  63.67MB/108.6MB
+ 1e8e07dae4a0 Downloading [============================>                      ]  15.25MB/26.43MB
+ 96d49975b609 Downloading [=======>                                           ]  11.33MB/73.06MB
+ e33c2b4cdc8b Downloading [=============================>                     ]  64.75MB/108.6MB
+ 1e8e07dae4a0 Downloading [=============================>                     ]  15.81MB/26.43MB
+ e33c2b4cdc8b Downloading [==============================>                    ]  65.83MB/108.6MB
+ 1e8e07dae4a0 Downloading [==============================>                    ]  16.37MB/26.43MB
+ 1e8e07dae4a0 Downloading [================================>                  ]  16.92MB/26.43MB
+ e33c2b4cdc8b Downloading [==============================>                    ]  66.91MB/108.6MB
+ 1e8e07dae4a0 Downloading [=================================>                 ]  17.48MB/26.43MB
+ e33c2b4cdc8b Downloading [===============================>                   ]  67.99MB/108.6MB
+ 1e8e07dae4a0 Downloading [==================================>                ]  18.04MB/26.43MB
+ 1e8e07dae4a0 Downloading [===================================>               ]   18.6MB/26.43MB
+ e33c2b4cdc8b Downloading [===============================>                   ]  69.07MB/108.6MB
+ 1e8e07dae4a0 Downloading [====================================>              ]  19.15MB/26.43MB
+ e33c2b4cdc8b Downloading [================================>                  ]  70.15MB/108.6MB
+ 1e8e07dae4a0 Downloading [=====================================>             ]  19.71MB/26.43MB
+ 1e8e07dae4a0 Downloading [======================================>            ]  20.27MB/26.43MB
+ e33c2b4cdc8b Downloading [================================>                  ]  71.23MB/108.6MB
+ 1e8e07dae4a0 Downloading [=======================================>           ]  20.82MB/26.43MB
+ e33c2b4cdc8b Downloading [=================================>                 ]  72.32MB/108.6MB
+ 1e8e07dae4a0 Downloading [========================================>          ]  21.66MB/26.43MB
+ 1e8e07dae4a0 Downloading [==========================================>        ]   22.5MB/26.43MB
+ e33c2b4cdc8b Downloading [=================================>                 ]   73.4MB/108.6MB
+ e33c2b4cdc8b Downloading [==================================>                ]  73.94MB/108.6MB
+ 1e8e07dae4a0 Downloading [============================================>      ]  23.33MB/26.43MB
+ 96d49975b609 Downloading [========>                                          ]  11.87MB/73.06MB
+ e33c2b4cdc8b Downloading [==================================>                ]  74.48MB/108.6MB
+ 1e8e07dae4a0 Downloading [=============================================>     ]  24.17MB/26.43MB
+ 1e8e07dae4a0 Downloading [==============================================>    ]  24.72MB/26.43MB
+ e33c2b4cdc8b Downloading [==================================>                ]  75.56MB/108.6MB
+ 1e8e07dae4a0 Downloading [===============================================>   ]  25.28MB/26.43MB
+ e33c2b4cdc8b Downloading [===================================>               ]  76.64MB/108.6MB
+ 1e8e07dae4a0 Downloading [================================================>  ]  25.84MB/26.43MB
+ 1e8e07dae4a0 Downloading [=================================================> ]  26.39MB/26.43MB
+ 1e8e07dae4a0 Download complete 
+ e33c2b4cdc8b Downloading [===================================>               ]  77.72MB/108.6MB
+ 1e8e07dae4a0 Extracting [>                                                  ]  294.9kB/26.43MB
+ 1e8e07dae4a0 Extracting [=====>                                             ]  2.654MB/26.43MB
+ e33c2b4cdc8b Downloading [====================================>              ]  79.34MB/108.6MB
+ 1e8e07dae4a0 Extracting [====================>                              ]  10.62MB/26.43MB
+ e33c2b4cdc8b Downloading [=====================================>             ]  80.96MB/108.6MB
+ 1e8e07dae4a0 Extracting [=============================>                     ]  15.63MB/26.43MB
+ e33c2b4cdc8b Downloading [======================================>            ]  82.58MB/108.6MB
+ 1e8e07dae4a0 Extracting [=======================================>           ]  20.94MB/26.43MB
+ 1e8e07dae4a0 Extracting [===========================================>       ]     23MB/26.43MB
+ e33c2b4cdc8b Downloading [======================================>            ]   84.2MB/108.6MB
+ 1e8e07dae4a0 Extracting [===============================================>   ]  25.07MB/26.43MB
+ e33c2b4cdc8b Downloading [=======================================>           ]  84.74MB/108.6MB
+ 1e8e07dae4a0 Extracting [=================================================> ]  26.25MB/26.43MB
+ 1e8e07dae4a0 Extracting [==================================================>]  26.43MB/26.43MB
+ e33c2b4cdc8b Downloading [=======================================>           ]  85.29MB/108.6MB
+ 1e8e07dae4a0 Pull complete 
+ smtp Pulled 
+ 96d49975b609 Downloading [========>                                          ]   12.4MB/73.06MB
+ e33c2b4cdc8b Downloading [=======================================>           ]  86.89MB/108.6MB
+ e33c2b4cdc8b Downloading [========================================>          ]  88.51MB/108.6MB
+ e33c2b4cdc8b Downloading [=========================================>         ]  90.13MB/108.6MB
+ e33c2b4cdc8b Downloading [==========================================>        ]  91.75MB/108.6MB
+ e33c2b4cdc8b Downloading [==========================================>        ]  93.36MB/108.6MB
+ e33c2b4cdc8b Downloading [===========================================>       ]  94.97MB/108.6MB
+ e33c2b4cdc8b Downloading [============================================>      ]  96.58MB/108.6MB
+ e33c2b4cdc8b Downloading [=============================================>     ]  98.21MB/108.6MB
+ e33c2b4cdc8b Downloading [=============================================>     ]  99.82MB/108.6MB
+ e33c2b4cdc8b Downloading [==============================================>    ]  101.4MB/108.6MB
+ e33c2b4cdc8b Downloading [===============================================>   ]  103.1MB/108.6MB
+ e33c2b4cdc8b Downloading [================================================>  ]  104.7MB/108.6MB
+ e33c2b4cdc8b Downloading [================================================>  ]  106.3MB/108.6MB
+ e33c2b4cdc8b Downloading [=================================================> ]  107.9MB/108.6MB
+ e33c2b4cdc8b Verifying Checksum 
+ e33c2b4cdc8b Download complete 
+ e33c2b4cdc8b Extracting [>                                                  ]  557.1kB/108.6MB
+ e33c2b4cdc8b Extracting [===>                                               ]  8.356MB/108.6MB
+ e33c2b4cdc8b Extracting [======>                                            ]  14.48MB/108.6MB
+ e33c2b4cdc8b Extracting [==========>                                        ]  21.73MB/108.6MB
+ e33c2b4cdc8b Extracting [==============>                                    ]  31.75MB/108.6MB
+ e33c2b4cdc8b Extracting [===================>                               ]  42.34MB/108.6MB
+ e33c2b4cdc8b Extracting [========================>                          ]  54.03MB/108.6MB
+ 96d49975b609 Downloading [========>                                          ]  12.95MB/73.06MB
+ e33c2b4cdc8b Extracting [==============================>                    ]  66.85MB/108.6MB
+ e33c2b4cdc8b Extracting [=====================================>             ]  81.33MB/108.6MB
+ e33c2b4cdc8b Extracting [===========================================>       ]  93.59MB/108.6MB
+ e33c2b4cdc8b Extracting [=============================================>     ]  99.71MB/108.6MB
+ e33c2b4cdc8b Extracting [================================================>  ]  104.7MB/108.6MB
+ e33c2b4cdc8b Extracting [=================================================> ]    107MB/108.6MB
+ e33c2b4cdc8b Extracting [==================================================>]  108.6MB/108.6MB
+ e33c2b4cdc8b Extracting [==================================================>]  108.6MB/108.6MB
+ e33c2b4cdc8b Pull complete 
+ d9549c12130e Extracting [==================================================>]  9.526kB/9.526kB
+ d9549c12130e Extracting [==================================================>]  9.526kB/9.526kB
+ d9549c12130e Pull complete 
+ d56c3b750562 Extracting [==================================================>]     128B/128B
+ d56c3b750562 Extracting [==================================================>]     128B/128B
+ d56c3b750562 Pull complete 
+ 87928eec8783 Extracting [==================================================>]     168B/168B
+ 87928eec8783 Extracting [==================================================>]     168B/168B
+ 87928eec8783 Pull complete 
+ f08423e428bc Extracting [==================================================>]  6.095kB/6.095kB
+ f08423e428bc Extracting [==================================================>]  6.095kB/6.095kB
+ f08423e428bc Pull complete 
+ 3d66db7b9447 Extracting [==================================================>]     186B/186B
+ 3d66db7b9447 Extracting [==================================================>]     186B/186B
+ 3d66db7b9447 Pull complete 
+ postgres Pulled 
+ 96d49975b609 Downloading [=========>                                         ]  13.48MB/73.06MB
+ 96d49975b609 Downloading [=========>                                         ]  14.03MB/73.06MB
+ 96d49975b609 Downloading [=========>                                         ]  14.56MB/73.06MB
+ 96d49975b609 Downloading [==========>                                        ]   15.1MB/73.06MB
+ 96d49975b609 Downloading [==========>                                        ]  15.64MB/73.06MB
+ 96d49975b609 Downloading [===========>                                       ]  16.18MB/73.06MB
+ 96d49975b609 Downloading [===========>                                       ]  16.72MB/73.06MB
+ 96d49975b609 Downloading [===========>                                       ]  17.26MB/73.06MB
+ 96d49975b609 Downloading [============>                                      ]   17.8MB/73.06MB
+ 96d49975b609 Downloading [============>                                      ]  18.34MB/73.06MB
+ 96d49975b609 Downloading [============>                                      ]  18.88MB/73.06MB
+ 96d49975b609 Downloading [=============>                                     ]  19.42MB/73.06MB
+ 96d49975b609 Downloading [=============>                                     ]  19.96MB/73.06MB
+ 96d49975b609 Downloading [==============>                                    ]   20.5MB/73.06MB
+ 96d49975b609 Downloading [==============>                                    ]  21.04MB/73.06MB
+ 96d49975b609 Downloading [==============>                                    ]  21.57MB/73.06MB
+ 96d49975b609 Downloading [===============>                                   ]   22.1MB/73.06MB
+ 96d49975b609 Downloading [===============>                                   ]  22.64MB/73.06MB
+ 96d49975b609 Downloading [===============>                                   ]  23.18MB/73.06MB
+ 96d49975b609 Downloading [================>                                  ]  23.72MB/73.06MB
+ 96d49975b609 Downloading [================>                                  ]  24.26MB/73.06MB
+ 96d49975b609 Downloading [================>                                  ]   24.8MB/73.06MB
+ 96d49975b609 Downloading [=================>                                 ]  25.34MB/73.06MB
+ 96d49975b609 Downloading [=================>                                 ]  25.88MB/73.06MB
+ 96d49975b609 Downloading [==================>                                ]  26.42MB/73.06MB
+ 96d49975b609 Downloading [==================>                                ]  26.96MB/73.06MB
+ 96d49975b609 Downloading [==================>                                ]  27.49MB/73.06MB
+ 96d49975b609 Downloading [===================>                               ]  28.03MB/73.06MB
+ 96d49975b609 Downloading [===================>                               ]  28.58MB/73.06MB
+ 96d49975b609 Downloading [====================>                              ]  29.66MB/73.06MB
+ 96d49975b609 Downloading [=====================>                             ]  30.74MB/73.06MB
+ 96d49975b609 Downloading [=====================>                             ]  31.82MB/73.06MB
+ 96d49975b609 Downloading [======================>                            ]  32.87MB/73.06MB
+ 96d49975b609 Downloading [=======================>                           ]  33.95MB/73.06MB
+ 96d49975b609 Downloading [=======================>                           ]  35.04MB/73.06MB
+ 96d49975b609 Downloading [========================>                          ]  36.12MB/73.06MB
+ 96d49975b609 Downloading [=========================>                         ]   37.2MB/73.06MB
+ 96d49975b609 Downloading [==========================>                        ]  38.27MB/73.06MB
+ 96d49975b609 Downloading [==========================>                        ]  39.35MB/73.06MB
+ 96d49975b609 Downloading [===========================>                       ]  40.44MB/73.06MB
+ 96d49975b609 Downloading [============================>                      ]  41.52MB/73.06MB
+ 96d49975b609 Downloading [=============================>                     ]  42.59MB/73.06MB
+ 96d49975b609 Downloading [=============================>                     ]  43.66MB/73.06MB
+ 96d49975b609 Downloading [==============================>                    ]  44.74MB/73.06MB
+ 96d49975b609 Downloading [===============================>                   ]  46.36MB/73.06MB
+ 96d49975b609 Downloading [================================>                  ]  47.98MB/73.06MB
+ 96d49975b609 Downloading [=================================>                 ]   49.6MB/73.06MB
+ 96d49975b609 Downloading [===================================>               ]  51.22MB/73.06MB
+ 96d49975b609 Downloading [===================================>               ]   52.3MB/73.06MB
+ 96d49975b609 Downloading [====================================>              ]  53.38MB/73.06MB
+ 96d49975b609 Downloading [=====================================>             ]  54.45MB/73.06MB
+ 96d49975b609 Downloading [=====================================>             ]  55.52MB/73.06MB
+ 96d49975b609 Downloading [======================================>            ]  56.59MB/73.06MB
+ 96d49975b609 Downloading [=======================================>           ]  57.67MB/73.06MB
+ 96d49975b609 Downloading [========================================>          ]  58.75MB/73.06MB
+ 96d49975b609 Downloading [========================================>          ]  59.83MB/73.06MB
+ 96d49975b609 Downloading [=========================================>         ]  60.91MB/73.06MB
+ 96d49975b609 Downloading [==========================================>        ]  61.99MB/73.06MB
+ 96d49975b609 Downloading [===========================================>       ]  63.06MB/73.06MB
+ 96d49975b609 Downloading [===========================================>       ]  63.59MB/73.06MB
+ 96d49975b609 Downloading [===========================================>       ]  64.13MB/73.06MB
+ 96d49975b609 Downloading [============================================>      ]   65.2MB/73.06MB
+ 96d49975b609 Downloading [=============================================>     ]  66.27MB/73.06MB
+ 96d49975b609 Downloading [==============================================>    ]  67.88MB/73.06MB
+ 96d49975b609 Downloading [===============================================>   ]  69.49MB/73.06MB
+ 96d49975b609 Downloading [================================================>  ]  71.11MB/73.06MB
+ 96d49975b609 Downloading [=================================================> ]  72.73MB/73.06MB
+ 96d49975b609 Verifying Checksum 
+ 96d49975b609 Download complete 
+ 96d49975b609 Extracting [>                                                  ]  557.1kB/73.06MB
+ 96d49975b609 Extracting [========>                                          ]   11.7MB/73.06MB
+ 96d49975b609 Extracting [==============>                                    ]  21.73MB/73.06MB
+ 96d49975b609 Extracting [======================>                            ]  32.31MB/73.06MB
+ 96d49975b609 Extracting [=============================>                     ]  43.45MB/73.06MB
+ 96d49975b609 Extracting [====================================>              ]  52.92MB/73.06MB
+ 96d49975b609 Extracting [===========================================>       ]  64.06MB/73.06MB
+ 96d49975b609 Extracting [==================================================>]  73.06MB/73.06MB
+ 96d49975b609 Pull complete 
+ symbolicator-cleanup Pulled 
+26.6.0: Pulling from getsentry/sentry
+c29f5b76f736: Already exists
+ad24708d5ee0: Already exists
+a9910b4c7158: Already exists
+e18acc4841d0: Already exists
+9e1b10191fac: Pulling fs layer
+894711dc6d42: Pulling fs layer
+4a870d48366f: Pulling fs layer
+f00ba0f94669: Pulling fs layer
+ea3c551569ae: Pulling fs layer
+9764e10b53f0: Pulling fs layer
+f065b4b50596: Pulling fs layer
+49511cc6592b: Pulling fs layer
+a20b292c86e9: Pulling fs layer
+e490ba16ef2d: Pulling fs layer
+76762166d8a7: Pulling fs layer
+2d0a2fbcb0b5: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+9764e10b53f0: Waiting
+76762166d8a7: Waiting
+2d0a2fbcb0b5: Waiting
+e490ba16ef2d: Waiting
+4f4fb700ef54: Waiting
+f065b4b50596: Waiting
+49511cc6592b: Waiting
+a20b292c86e9: Waiting
+f00ba0f94669: Waiting
+ea3c551569ae: Waiting
+9e1b10191fac: Verifying Checksum
+9e1b10191fac: Download complete
+9e1b10191fac: Pull complete
+4a870d48366f: Verifying Checksum
+4a870d48366f: Download complete
+894711dc6d42: Verifying Checksum
+894711dc6d42: Download complete
+894711dc6d42: Pull complete
+4a870d48366f: Pull complete
+f00ba0f94669: Verifying Checksum
+f00ba0f94669: Download complete
+f00ba0f94669: Pull complete
+9764e10b53f0: Verifying Checksum
+9764e10b53f0: Download complete
+f065b4b50596: Verifying Checksum
+f065b4b50596: Download complete
+ea3c551569ae: Verifying Checksum
+ea3c551569ae: Download complete
+ea3c551569ae: Pull complete
+9764e10b53f0: Pull complete
+f065b4b50596: Pull complete
+e490ba16ef2d: Verifying Checksum
+e490ba16ef2d: Download complete
+76762166d8a7: Download complete
+2d0a2fbcb0b5: Verifying Checksum
+2d0a2fbcb0b5: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+a20b292c86e9: Verifying Checksum
+a20b292c86e9: Download complete
+49511cc6592b: Verifying Checksum
+49511cc6592b: Download complete
+49511cc6592b: Pull complete
+a20b292c86e9: Pull complete
+e490ba16ef2d: Pull complete
+76762166d8a7: Pull complete
+2d0a2fbcb0b5: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:10377430e1fa498ce057d89620b8e8511dd1df5af994bae286aa5d50b1913b24
+Status: Downloaded newer image for ghcr.io/getsentry/sentry:26.6.0
+ghcr.io/getsentry/sentry:26.6.0
+26.6.0: Pulling from getsentry/snuba
+5435b2dcdf5c: Already exists
+4eeb9a554e5a: Already exists
+559c2b59f78d: Already exists
+02b5ccdcca95: Already exists
+3cd2e0bac63c: Pulling fs layer
+cf46e9cbbc5c: Pulling fs layer
+0dafdeb511bf: Pulling fs layer
+64738f36a945: Pulling fs layer
+4a75ba9f7c3f: Pulling fs layer
+4f9666fa1f66: Pulling fs layer
+eeb4052f4431: Pulling fs layer
+811430b261ab: Pulling fs layer
+4a75ba9f7c3f: Waiting
+b839f5ff175e: Pulling fs layer
+4f9666fa1f66: Waiting
+eeb4052f4431: Waiting
+811430b261ab: Waiting
+09b8e36f5213: Pulling fs layer
+b839f5ff175e: Waiting
+9a1ade784070: Pulling fs layer
+64738f36a945: Waiting
+09b8e36f5213: Waiting
+9a1ade784070: Waiting
+3cd2e0bac63c: Download complete
+3cd2e0bac63c: Pull complete
+0dafdeb511bf: Verifying Checksum
+0dafdeb511bf: Download complete
+4a75ba9f7c3f: Verifying Checksum
+4a75ba9f7c3f: Download complete
+4f9666fa1f66: Download complete
+cf46e9cbbc5c: Verifying Checksum
+cf46e9cbbc5c: Download complete
+eeb4052f4431: Verifying Checksum
+eeb4052f4431: Download complete
+cf46e9cbbc5c: Pull complete
+0dafdeb511bf: Pull complete
+b839f5ff175e: Verifying Checksum
+b839f5ff175e: Download complete
+09b8e36f5213: Verifying Checksum
+09b8e36f5213: Download complete
+9a1ade784070: Verifying Checksum
+811430b261ab: Verifying Checksum
+811430b261ab: Download complete
+64738f36a945: Download complete
+64738f36a945: Pull complete
+4a75ba9f7c3f: Pull complete
+4f9666fa1f66: Pull complete
+eeb4052f4431: Pull complete
+811430b261ab: Pull complete
+b839f5ff175e: Pull complete
+09b8e36f5213: Pull complete
+9a1ade784070: Pull complete
+Digest: sha256:e1f5a30ea182b7ce2976912268894e525a3a6de0c00842aecb24ed387f61fcc9
+Status: Downloaded newer image for ghcr.io/getsentry/snuba:26.6.0
+ghcr.io/getsentry/snuba:26.6.0
+26.6.0: Pulling from getsentry/symbolicator
+Digest: sha256:b66d1d5c796e056bf19f597bb7d1ac39604a767eac501dee3710b8844b12228f
+Status: Image is up to date for ghcr.io/getsentry/symbolicator:26.6.0
+ghcr.io/getsentry/symbolicator:26.6.0
+26.6.0: Pulling from getsentry/relay
+875ea9878944: Already exists
+990a9c434e5e: Already exists
+39dc083afc39: Already exists
+bf7a4185f015: Already exists
+2780920e5dbf: Already exists
+7c12895b777b: Already exists
+3214acf345c0: Already exists
+52630fc75a18: Already exists
+dd64bf2dd177: Already exists
+b839dfae01f6: Already exists
+dcaa5a89b0cc: Already exists
+069d1e267530: Already exists
+235c3625d753: Already exists
+dc0fb75e565a: Already exists
+336f6c853c4e: Already exists
+1e8acdaa2607: Already exists
+a812c900745e: Already exists
+b16bb3b2bd07: Already exists
+c159ef949d45: Pulling fs layer
+a7ceaf7a979b: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+61715970c368: Pulling fs layer
+61715970c368: Waiting
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+c159ef949d45: Verifying Checksum
+c159ef949d45: Download complete
+c159ef949d45: Pull complete
+a7ceaf7a979b: Verifying Checksum
+a7ceaf7a979b: Pull complete
+4f4fb700ef54: Pull complete
+61715970c368: Verifying Checksum
+61715970c368: Download complete
+61715970c368: Pull complete
+Digest: sha256:b6070f78dfa20aedc2484badd580c827b821212a938347badc8477bd9e7d21bf
+Status: Downloaded newer image for ghcr.io/getsentry/relay:26.6.0
+ghcr.io/getsentry/relay:26.6.0
+26.6.0: Pulling from getsentry/taskbroker
+b9136609bef0: Already exists
+90b2ca288ffa: Pulling fs layer
+8662fcd160a7: Pulling fs layer
+f039e364fa77: Pulling fs layer
+06a014e49fc4: Pulling fs layer
+475bb98237d4: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+06a014e49fc4: Waiting
+475bb98237d4: Waiting
+4f4fb700ef54: Waiting
+90b2ca288ffa: Download complete
+90b2ca288ffa: Pull complete
+f039e364fa77: Verifying Checksum
+f039e364fa77: Download complete
+06a014e49fc4: Verifying Checksum
+06a014e49fc4: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+8662fcd160a7: Verifying Checksum
+8662fcd160a7: Download complete
+8662fcd160a7: Pull complete
+f039e364fa77: Pull complete
+06a014e49fc4: Pull complete
+475bb98237d4: Verifying Checksum
+475bb98237d4: Download complete
+475bb98237d4: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:cbc00b0fd74af9fbc2539b241832700a9827c39ac19ea667aa210007d1c93e1b
+Status: Downloaded newer image for ghcr.io/getsentry/taskbroker:26.6.0
+ghcr.io/getsentry/taskbroker:26.6.0
+26.6.0: Pulling from getsentry/vroom
+dc4bf025fa70: Pulling fs layer
+49519bf1e172: Pulling fs layer
+b05f6a5a998e: Pulling fs layer
+c6a6e46b3e44: Pulling fs layer
+c6a6e46b3e44: Waiting
+49519bf1e172: Verifying Checksum
+49519bf1e172: Download complete
+c6a6e46b3e44: Verifying Checksum
+c6a6e46b3e44: Download complete
+b05f6a5a998e: Verifying Checksum
+b05f6a5a998e: Download complete
+dc4bf025fa70: Verifying Checksum
+dc4bf025fa70: Download complete
+dc4bf025fa70: Pull complete
+49519bf1e172: Pull complete
+b05f6a5a998e: Pull complete
+c6a6e46b3e44: Pull complete
+Digest: sha256:95957d5d594bf95552e8bb415735865cc1d1ca895e709b54d31666c81a6dbad0
+Status: Downloaded newer image for ghcr.io/getsentry/vroom:26.6.0
+ghcr.io/getsentry/vroom:26.6.0
+26.6.0: Pulling from getsentry/uptime-checker
+9824c27679d3: Already exists
+1c389bed28b1: Pulling fs layer
+b0d2b320b27e: Pulling fs layer
+1837b069caec: Pulling fs layer
+b0d2b320b27e: Download complete
+1c389bed28b1: Verifying Checksum
+1c389bed28b1: Download complete
+1c389bed28b1: Pull complete
+b0d2b320b27e: Pull complete
+1837b069caec: Verifying Checksum
+1837b069caec: Download complete
+1837b069caec: Pull complete
+Digest: sha256:1804467aa576f91e697d0aac7fc3fa10cd3c74a5d8f70feada23e438c2afee81
+Status: Downloaded newer image for ghcr.io/getsentry/uptime-checker:26.6.0
+ghcr.io/getsentry/uptime-checker:26.6.0
+26.6.0: Pulling from getsentry/launchpad
+9b02e9fcb401: Already exists
+766f9fc86766: Pulling fs layer
+de83898c963b: Pulling fs layer
+de5b44ff502d: Pulling fs layer
+b5b8fef47268: Pulling fs layer
+7e2a9fa407bd: Pulling fs layer
+415a2c4e1da3: Pulling fs layer
+25f03dee4a98: Pulling fs layer
+c58b8e8f98d8: Pulling fs layer
+5e2ecdb51c35: Pulling fs layer
+02a7b8f7bf19: Pulling fs layer
+2926868f25a8: Pulling fs layer
+06b519c162aa: Pulling fs layer
+7e2a9fa407bd: Waiting
+7a6d37548815: Pulling fs layer
+5e2ecdb51c35: Waiting
+25f03dee4a98: Waiting
+74282ab5bedb: Pulling fs layer
+415a2c4e1da3: Waiting
+02a7b8f7bf19: Waiting
+c58b8e8f98d8: Waiting
+fa67a11a03c4: Pulling fs layer
+2926868f25a8: Waiting
+dccd848404ef: Pulling fs layer
+06b519c162aa: Waiting
+7a6d37548815: Waiting
+4f4fb700ef54: Pulling fs layer
+74282ab5bedb: Waiting
+fa67a11a03c4: Waiting
+4a6a0988c195: Pulling fs layer
+b5b8fef47268: Waiting
+80d4fd10f5e5: Pulling fs layer
+dccd848404ef: Waiting
+4a6a0988c195: Waiting
+4f4fb700ef54: Waiting
+942fcc4e997e: Pulling fs layer
+64f0184bdbbb: Pulling fs layer
+80d4fd10f5e5: Waiting
+b1556caf5ae4: Pulling fs layer
+942fcc4e997e: Waiting
+64f0184bdbbb: Waiting
+b1556caf5ae4: Waiting
+de5b44ff502d: Verifying Checksum
+de5b44ff502d: Download complete
+766f9fc86766: Verifying Checksum
+766f9fc86766: Download complete
+766f9fc86766: Pull complete
+7e2a9fa407bd: Verifying Checksum
+7e2a9fa407bd: Download complete
+de83898c963b: Verifying Checksum
+de83898c963b: Download complete
+b5b8fef47268: Verifying Checksum
+b5b8fef47268: Download complete
+de83898c963b: Pull complete
+de5b44ff502d: Pull complete
+25f03dee4a98: Verifying Checksum
+25f03dee4a98: Download complete
+b5b8fef47268: Pull complete
+7e2a9fa407bd: Pull complete
+c58b8e8f98d8: Verifying Checksum
+c58b8e8f98d8: Download complete
+02a7b8f7bf19: Verifying Checksum
+02a7b8f7bf19: Download complete
+2926868f25a8: Verifying Checksum
+2926868f25a8: Download complete
+06b519c162aa: Verifying Checksum
+06b519c162aa: Download complete
+7a6d37548815: Verifying Checksum
+7a6d37548815: Download complete
+74282ab5bedb: Verifying Checksum
+74282ab5bedb: Download complete
+fa67a11a03c4: Download complete
+5e2ecdb51c35: Verifying Checksum
+5e2ecdb51c35: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+dccd848404ef: Verifying Checksum
+dccd848404ef: Download complete
+4a6a0988c195: Download complete
+80d4fd10f5e5: Download complete
+942fcc4e997e: Verifying Checksum
+942fcc4e997e: Download complete
+b1556caf5ae4: Verifying Checksum
+b1556caf5ae4: Download complete
+64f0184bdbbb: Verifying Checksum
+64f0184bdbbb: Download complete
+415a2c4e1da3: Download complete
+415a2c4e1da3: Pull complete
+25f03dee4a98: Pull complete
+c58b8e8f98d8: Pull complete
+5e2ecdb51c35: Pull complete
+02a7b8f7bf19: Pull complete
+2926868f25a8: Pull complete
+06b519c162aa: Pull complete
+7a6d37548815: Pull complete
+74282ab5bedb: Pull complete
+fa67a11a03c4: Pull complete
+dccd848404ef: Pull complete
+4f4fb700ef54: Pull complete
+4a6a0988c195: Pull complete
+80d4fd10f5e5: Pull complete
+942fcc4e997e: Pull complete
+64f0184bdbbb: Pull complete
+b1556caf5ae4: Pull complete
+Digest: sha256:30ed5a3c320882ceb11e42744f7c2c9328d92730ff46d20fc3bdee27df665aba
+Status: Downloaded newer image for ghcr.io/getsentry/launchpad:26.6.0
+ghcr.io/getsentry/launchpad:26.6.0
+
+▶ Turning things off ...
+ Container sentry-self-hosted-vroom-1  Stopping
+ Container sentry-self-hosted-vroom-1  Stopped
+ Container sentry-self-hosted-vroom-1  Removing
+ Container sentry-self-hosted-smtp-1  Stopping
+ Container sentry-self-hosted-snuba-api-1  Stopping
+ Container sentry-self-hosted-seaweedfs-1  Stopping
+ Container sentry-self-hosted-pgbouncer-1  Stopping
+ Container sentry-self-hosted-symbolicator-1  Stopping
+ Container sentry-self-hosted-memcached-1  Stopping
+ Container sentry-self-hosted-smtp-1  Stopped
+ Container sentry-self-hosted-smtp-1  Removing
+ Container sentry-self-hosted-seaweedfs-1  Stopped
+ Container sentry-self-hosted-seaweedfs-1  Removing
+ Container sentry-self-hosted-snuba-api-1  Stopped
+ Container sentry-self-hosted-memcached-1  Stopped
+ Container sentry-self-hosted-memcached-1  Removing
+ Container sentry-self-hosted-snuba-api-1  Removing
+ Container sentry-self-hosted-symbolicator-1  Stopped
+ Container sentry-self-hosted-symbolicator-1  Removing
+ Container sentry-self-hosted-pgbouncer-1  Stopped
+ Container sentry-self-hosted-pgbouncer-1  Removing
+ Container sentry-self-hosted-vroom-1  Removed
+ Container sentry-self-hosted-memcached-1  Removed
+ Container sentry-self-hosted-snuba-api-1  Removed
+ Container sentry-self-hosted-clickhouse-1  Stopping
+ Container sentry-self-hosted-kafka-1  Stopping
+ Container sentry-self-hosted-redis-1  Stopping
+ Container sentry-self-hosted-kafka-1  Stopped
+ Container sentry-self-hosted-kafka-1  Removing
+ Container sentry-self-hosted-symbolicator-1  Removed
+ Container sentry-self-hosted-redis-1  Stopped
+ Container sentry-self-hosted-redis-1  Removing
+ Container sentry-self-hosted-pgbouncer-1  Removed
+ Container sentry-self-hosted-postgres-1  Stopping
+ Container sentry-self-hosted-postgres-1  Stopped
+ Container sentry-self-hosted-postgres-1  Removing
+ Container sentry-self-hosted-smtp-1  Removed
+ Container sentry-self-hosted-postgres-1  Removed
+ Container sentry-self-hosted-redis-1  Removed
+ Container sentry-self-hosted-kafka-1  Removed
+ Container sentry-self-hosted-seaweedfs-1  Removed
+ Container sentry-self-hosted-clickhouse-1  Stopped
+ Container sentry-self-hosted-clickhouse-1  Removing
+ Container sentry-self-hosted-clickhouse-1  Removed
+ Image sentry-self-hosted-local:latest  Removing
+ Image clickhouse-self-hosted-local:latest  Removing
+ Image mingminghk/sentry-self-hosted-local:26.5.0  Removing
+ Image sentry-cleanup-self-hosted-local:latest  Removing
+ Network sentry-self-hosted_default  Removing
+ Image clickhouse-self-hosted-local:latest  Removed
+ Image sentry-cleanup-self-hosted-local:latest  Removed
+ Image mingminghk/sentry-self-hosted-local:26.5.0  Removed
+ Image sentry-self-hosted-local:latest  Removed
+ Network sentry-self-hosted_default  Removed
+
+▶ Creating volumes for persistent storage ...
+Created sentry-clickhouse.
+Created sentry-data.
+Created sentry-kafka.
+Created sentry-postgres.
+Created sentry-redis.
+Created sentry-seaweedfs.
+
+▶ Ensuring files from examples ...
+Creating sentry/sentry.conf.py ...
+cp: warning: behavior of -n is non-portable and may change in future; use --update=none instead
+Creating sentry/config.yml ...
+cp: warning: behavior of -n is non-portable and may change in future; use --update=none instead
+Creating symbolicator/config.yml ...
+cp: warning: behavior of -n is non-portable and may change in future; use --update=none instead
+
+▶ Checking memcached backend ...
+ReconnectingMemcache found in sentry/sentry.conf.py, you're good.
+
+▶ Ensuring Relay credentials ...
+Creating relay/config.yml ...
+cp: warning: behavior of -n is non-portable and may change in future; use --update=none instead
+26.6.0: Pulling from getsentry/relay
+Digest: sha256:b6070f78dfa20aedc2484badd580c827b821212a938347badc8477bd9e7d21bf
+Status: Image is up to date for ghcr.io/getsentry/relay:26.6.0
+ghcr.io/getsentry/relay:26.6.0
+ Network sentry-self-hosted_default  Creating
+ Network sentry-self-hosted_default  Created
+Relay credentials written to relay/credentials.json.
+
+▶ Generating secret key ...
+Secret key written to sentry/config.yml
+
+▶ Building and tagging Docker images ...
+
+time="2026-06-16T15:34:14+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [web internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [web internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [web internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [web internal] load build context
+#4 transferring context: 51.80kB done
+#4 DONE 0.0s
+
+#5 [web 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#5 DONE 0.1s
+
+#6 [web 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 0.629 Collecting https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 1.432   Downloading https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip (9.7 kB)
+#6 1.435   Preparing metadata (setup.py): started
+#6 1.722   Preparing metadata (setup.py): finished with status 'done'
+#6 1.726 Requirement already satisfied: boto3>=1.34.8 in /.venv/lib/python3.13/site-packages (from sentry-nodestore-s3==1.0.0) (1.34.128)
+#6 1.727 Requirement already satisfied: certifi>=2025.11.12 in /.venv/lib/python3.13/site-packages (from sentry-nodestore-s3==1.0.0) (2026.4.22)
+#6 1.730 Requirement already satisfied: botocore<1.35.0,>=1.34.128 in /.venv/lib/python3.13/site-packages (from boto3>=1.34.8->sentry-nodestore-s3==1.0.0) (1.34.128)
+#6 1.731 Requirement already satisfied: jmespath<2.0.0,>=0.7.1 in /.venv/lib/python3.13/site-packages (from boto3>=1.34.8->sentry-nodestore-s3==1.0.0) (0.10.0)
+#6 1.732 Requirement already satisfied: s3transfer<0.11.0,>=0.10.0 in /.venv/lib/python3.13/site-packages (from boto3>=1.34.8->sentry-nodestore-s3==1.0.0) (0.10.0)
+#6 1.737 Requirement already satisfied: python-dateutil<3.0.0,>=2.1 in /.venv/lib/python3.13/site-packages (from botocore<1.35.0,>=1.34.128->boto3>=1.34.8->sentry-nodestore-s3==1.0.0) (2.9.0.post0)
+#6 1.739 Requirement already satisfied: urllib3!=2.2.0,<3,>=1.25.4 in /.venv/lib/python3.13/site-packages (from botocore<1.35.0,>=1.34.128->boto3>=1.34.8->sentry-nodestore-s3==1.0.0) (2.7.0)
+#6 1.744 Requirement already satisfied: six>=1.5 in /.venv/lib/python3.13/site-packages (from python-dateutil<3.0.0,>=2.1->botocore<1.35.0,>=1.34.128->boto3>=1.34.8->sentry-nodestore-s3==1.0.0) (1.17.0)
+#6 1.750 Building wheels for collected packages: sentry-nodestore-s3
+#6 1.751   Building wheel for sentry-nodestore-s3 (setup.py): started
+#6 2.191   Building wheel for sentry-nodestore-s3 (setup.py): finished with status 'done'
+#6 2.192   Created wheel for sentry-nodestore-s3: filename=sentry_nodestore_s3-1.0.0-py3-none-any.whl size=3961 sha256=3e163045d62a489f1fe742e3d825d0e6bca93b8b6983cdde0ac11d88503d9cec
+#6 2.192   Stored in directory: /tmp/pip-ephem-wheel-cache-zw6vrcjz/wheels/f4/ec/38/7c5f16e9f8d0719bbdceaa7fc328c2454ad793e27f22fb18f2
+#6 2.194 Successfully built sentry-nodestore-s3
+#6 3.130 Installing collected packages: sentry-nodestore-s3
+#6 3.146 Successfully installed sentry-nodestore-s3-1.0.0
+#6 DONE 3.2s
+
+#7 [web 3/5] COPY . /usr/src/sentry
+#7 DONE 0.0s
+
+#8 [web 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#8 DONE 0.2s
+
+#9 [web 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 DONE 0.2s
+
+#10 [web] exporting to image
+#10 exporting layers 0.0s done
+#10 writing image sha256:62bb8fa0bce448a663fa9c68edfc06cbbed170ad895e520e34e82b438e1ac39d done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.1s
+
+#11 [web] resolving provenance for metadata file
+#11 DONE 0.0s
+ web  Built
+time="2026-06-16T15:34:18+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [clickhouse internal] load build definition from Dockerfile
+#1 transferring dockerfile: 71B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${BASE_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [clickhouse internal] load metadata for docker.io/altinity/clickhouse-server:25.3.6.10034.altinitystable
+#2 ...
+
+#3 [clickhouse auth] altinity/clickhouse-server:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [clickhouse internal] load metadata for docker.io/altinity/clickhouse-server:25.3.6.10034.altinitystable
+#2 DONE 1.3s
+
+#4 [clickhouse internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [clickhouse 1/1] FROM docker.io/altinity/clickhouse-server:25.3.6.10034.altinitystable@sha256:3396b15c51a2c13c0aead9532bd022e478a8f575fe325deacb7d0efeae594174
+#5 CACHED
+
+#6 [clickhouse] exporting to image
+#6 exporting layers done
+#6 writing image sha256:3c31bb67e59627418332df68d7d018b219328574c47f54c4bf1e60472e4217d9 done
+#6 naming to docker.io/library/clickhouse-self-hosted-local done
+#6 DONE 0.0s
+
+#7 [clickhouse] resolving provenance for metadata file
+#7 DONE 0.0s
+ clickhouse  Built
+time="2026-06-16T15:34:21+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [post-process-forwarder-errors internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [post-process-forwarder-errors internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [post-process-forwarder-errors internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [post-process-forwarder-errors 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [post-process-forwarder-errors internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [post-process-forwarder-errors 3/5] COPY . /usr/src/sentry
+#6 CACHED
+
+#7 [post-process-forwarder-errors 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [post-process-forwarder-errors 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#8 CACHED
+
+#9 [post-process-forwarder-errors 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [post-process-forwarder-errors] exporting to image
+#10 exporting layers done
+#10 writing image sha256:fbaff2ecf3bf3bb61184e4f559ea49fa536b87f2bf288f488af445145cc41655 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [post-process-forwarder-errors] resolving provenance for metadata file
+#11 DONE 0.0s
+ post-process-forwarder-errors  Built
+time="2026-06-16T15:34:22+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [subscription-consumer-events internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [subscription-consumer-events internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [subscription-consumer-events internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [subscription-consumer-events 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [subscription-consumer-events internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [subscription-consumer-events 3/5] COPY . /usr/src/sentry
+#6 CACHED
+
+#7 [subscription-consumer-events 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [subscription-consumer-events 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#8 CACHED
+
+#9 [subscription-consumer-events 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [subscription-consumer-events] exporting to image
+#10 exporting layers done
+#10 writing image sha256:ec00c78942bc044949b70d660430ecf49c4f15ad3cef5f037b39c0487341dcae done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [subscription-consumer-events] resolving provenance for metadata file
+#11 DONE 0.0s
+ subscription-consumer-events  Built
+time="2026-06-16T15:34:22+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [web internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [web internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [web internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [web 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [web internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [web 3/5] COPY . /usr/src/sentry
+#6 CACHED
+
+#7 [web 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [web 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#8 CACHED
+
+#9 [web 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [web] exporting to image
+#10 exporting layers done
+#10 writing image sha256:62bb8fa0bce448a663fa9c68edfc06cbbed170ad895e520e34e82b438e1ac39d done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [web] resolving provenance for metadata file
+#11 DONE 0.0s
+ web  Built
+time="2026-06-16T15:34:23+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [events-consumer internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [events-consumer internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [events-consumer internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [events-consumer 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [events-consumer internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [events-consumer 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 CACHED
+
+#7 [events-consumer 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [events-consumer 3/5] COPY . /usr/src/sentry
+#8 CACHED
+
+#9 [events-consumer 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [events-consumer] exporting to image
+#10 exporting layers done
+#10 writing image sha256:de6f1e2eb0b02614fb35aa9199d0ba7f4bfefe26c55b9e36842060e0ad3efed6 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [events-consumer] resolving provenance for metadata file
+#11 DONE 0.0s
+ events-consumer  Built
+time="2026-06-16T15:34:23+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [generic-metrics-consumer internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [generic-metrics-consumer internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [generic-metrics-consumer internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [generic-metrics-consumer 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [generic-metrics-consumer internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [generic-metrics-consumer 3/5] COPY . /usr/src/sentry
+#6 CACHED
+
+#7 [generic-metrics-consumer 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [generic-metrics-consumer 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#8 CACHED
+
+#9 [generic-metrics-consumer 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [generic-metrics-consumer] exporting to image
+#10 exporting layers done
+#10 writing image sha256:ab1dd7191522690df9e3f90e53e0611bdd6a9b0ba24a1b557a8a1c28c48f2219 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [generic-metrics-consumer] resolving provenance for metadata file
+#11 DONE 0.0s
+ generic-metrics-consumer  Built
+time="2026-06-16T15:34:23+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [monitors-clock-tasks internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [monitors-clock-tasks internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [monitors-clock-tasks internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [monitors-clock-tasks 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [monitors-clock-tasks internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [monitors-clock-tasks 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 CACHED
+
+#7 [monitors-clock-tasks 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [monitors-clock-tasks 3/5] COPY . /usr/src/sentry
+#8 CACHED
+
+#9 [monitors-clock-tasks 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [monitors-clock-tasks] exporting to image
+#10 exporting layers done
+#10 writing image sha256:5ed54d7a6d9730256d90a6abf47cc1ef79a0cda687789c769cc82d7477f5b1ba done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [monitors-clock-tasks] resolving provenance for metadata file
+#11 DONE 0.0s
+ monitors-clock-tasks  Built
+time="2026-06-16T15:34:24+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [process-segments internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [process-segments internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [process-segments internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [process-segments 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [process-segments internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [process-segments 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 CACHED
+
+#7 [process-segments 3/5] COPY . /usr/src/sentry
+#7 CACHED
+
+#8 [process-segments 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#8 CACHED
+
+#9 [process-segments 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [process-segments] exporting to image
+#10 exporting layers done
+#10 writing image sha256:129a19550811999f1b858b0c1d18598bf32696c76bbc51cab0d42d9a00507c78 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [process-segments] resolving provenance for metadata file
+#11 DONE 0.0s
+ process-segments  Built
+time="2026-06-16T15:34:24+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [ingest-feedback-events internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [ingest-feedback-events internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [ingest-feedback-events internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ingest-feedback-events 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [ingest-feedback-events internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [ingest-feedback-events 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 CACHED
+
+#7 [ingest-feedback-events 3/5] COPY . /usr/src/sentry
+#7 CACHED
+
+#8 [ingest-feedback-events 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#8 CACHED
+
+#9 [ingest-feedback-events 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [ingest-feedback-events] exporting to image
+#10 exporting layers done
+#10 writing image sha256:69fdad47b5d4490d25d878d84707a574d8a5739ad44ea257262eadec5aa20f04 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [ingest-feedback-events] resolving provenance for metadata file
+#11 DONE 0.0s
+ ingest-feedback-events  Built
+time="2026-06-16T15:34:25+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [ingest-replay-recordings internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [ingest-replay-recordings internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [ingest-replay-recordings internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ingest-replay-recordings 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [ingest-replay-recordings internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [ingest-replay-recordings 3/5] COPY . /usr/src/sentry
+#6 CACHED
+
+#7 [ingest-replay-recordings 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#7 CACHED
+
+#8 [ingest-replay-recordings 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#8 CACHED
+
+#9 [ingest-replay-recordings 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [ingest-replay-recordings] exporting to image
+#10 exporting layers done
+#10 writing image sha256:6765d96caa4caeb65cfd93441c2170585eda528d1ca4c7a357669085e90d9f51 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [ingest-replay-recordings] resolving provenance for metadata file
+#11 DONE 0.0s
+ ingest-replay-recordings  Built
+time="2026-06-16T15:34:25+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [post-process-forwarder-transactions internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [post-process-forwarder-transactions internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [post-process-forwarder-transactions internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [post-process-forwarder-transactions 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [post-process-forwarder-transactions internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [post-process-forwarder-transactions 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 CACHED
+
+#7 [post-process-forwarder-transactions 3/5] COPY . /usr/src/sentry
+#7 CACHED
+
+#8 [post-process-forwarder-transactions 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#8 CACHED
+
+#9 [post-process-forwarder-transactions 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [post-process-forwarder-transactions] exporting to image
+#10 exporting layers done
+#10 writing image sha256:4c4dd27e28b3143767f7d20763cd6a52bad6d1504f65cf63c5ebac18ff2ca373 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [post-process-forwarder-transactions] resolving provenance for metadata file
+#11 DONE 0.0s
+ post-process-forwarder-transactions  Built
+time="2026-06-16T15:34:27+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [subscription-consumer-metrics internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [subscription-consumer-metrics internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [subscription-consumer-metrics internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [subscription-consumer-metrics 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [subscription-consumer-metrics internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [subscription-consumer-metrics 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 CACHED
+
+#7 [subscription-consumer-metrics 3/5] COPY . /usr/src/sentry
+#7 CACHED
+
+#8 [subscription-consumer-metrics 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#8 CACHED
+
+#9 [subscription-consumer-metrics 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [subscription-consumer-metrics] exporting to image
+#10 exporting layers done
+#10 writing image sha256:0ba9e2efbf8db4d459e9b5bffd5236106664a81edd420a75d113cb0670b1e67c done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [subscription-consumer-metrics] resolving provenance for metadata file
+#11 DONE 0.0s
+ subscription-consumer-metrics  Built
+time="2026-06-16T15:34:27+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [taskworker internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [taskworker internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [taskworker internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [taskworker 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [taskworker internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [taskworker 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#6 CACHED
+
+#7 [taskworker 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#7 CACHED
+
+#8 [taskworker 3/5] COPY . /usr/src/sentry
+#8 CACHED
+
+#9 [taskworker 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [taskworker] exporting to image
+#10 exporting layers done
+#10 writing image sha256:dd13f634198562cecd291890298cbc723c0c541b0d46aa8abcb42e983bfe681e done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [taskworker] resolving provenance for metadata file
+#11 DONE 0.0s
+ taskworker  Built
+time="2026-06-16T15:34:28+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [uptime-results internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [uptime-results internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [uptime-results internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [uptime-results 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [uptime-results internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [uptime-results 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#6 CACHED
+
+#7 [uptime-results 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#7 CACHED
+
+#8 [uptime-results 3/5] COPY . /usr/src/sentry
+#8 CACHED
+
+#9 [uptime-results 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [uptime-results] exporting to image
+#10 exporting layers done
+#10 writing image sha256:b4d4705f1b36f2e0938dc2783f540cac2872f5c4ac28d6bc2d1a4176bb85f4e5 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [uptime-results] resolving provenance for metadata file
+#11 DONE 0.0s
+ uptime-results  Built
+time="2026-06-16T15:34:28+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [subscription-consumer-transactions internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [subscription-consumer-transactions internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [subscription-consumer-transactions internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [subscription-consumer-transactions 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [subscription-consumer-transactions internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [subscription-consumer-transactions 3/5] COPY . /usr/src/sentry
+#6 CACHED
+
+#7 [subscription-consumer-transactions 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [subscription-consumer-transactions 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#8 CACHED
+
+#9 [subscription-consumer-transactions 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [subscription-consumer-transactions] exporting to image
+#10 exporting layers done
+#10 writing image sha256:e7f4bc5692fbf4cdd75887cda7cc2198c399c0102b8a4e31abdbd490125e3e42 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [subscription-consumer-transactions] resolving provenance for metadata file
+#11 DONE 0.0s
+ subscription-consumer-transactions  Built
+time="2026-06-16T15:34:28+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [attachments-consumer internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [attachments-consumer internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [attachments-consumer internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [attachments-consumer internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [attachments-consumer 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [attachments-consumer internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [attachments-consumer 3/5] COPY . /usr/src/sentry
+#6 CACHED
+
+#7 [attachments-consumer 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#7 CACHED
+
+#8 [attachments-consumer 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#8 CACHED
+
+#9 [attachments-consumer 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [attachments-consumer] exporting to image
+#10 exporting layers done
+#10 writing image sha256:e8401a97d7bd9cb2af7ffc6417d0ae0268e8e9f5d91461e653e40f15ff7dc86d done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [attachments-consumer] resolving provenance for metadata file
+#11 DONE 0.0s
+ attachments-consumer  Built
+time="2026-06-16T15:34:29+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [ingest-monitors internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [ingest-monitors internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [ingest-monitors internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ingest-monitors 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [ingest-monitors internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [ingest-monitors 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#6 CACHED
+
+#7 [ingest-monitors 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#7 CACHED
+
+#8 [ingest-monitors 3/5] COPY . /usr/src/sentry
+#8 CACHED
+
+#9 [ingest-monitors 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [ingest-monitors] exporting to image
+#10 exporting layers done
+#10 writing image sha256:e844f413864832bc67c9e83853378bf92e349d8235b6975a7a319a888b761fd7 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [ingest-monitors] resolving provenance for metadata file
+#11 DONE 0.0s
+ ingest-monitors  Built
+time="2026-06-16T15:34:29+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [ingest-occurrences internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [ingest-occurrences internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [ingest-occurrences internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ingest-occurrences 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [ingest-occurrences internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [ingest-occurrences 3/5] COPY . /usr/src/sentry
+#6 CACHED
+
+#7 [ingest-occurrences 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [ingest-occurrences 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#8 CACHED
+
+#9 [ingest-occurrences 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [ingest-occurrences] exporting to image
+#10 exporting layers done
+#10 writing image sha256:f1a9663e6d812071de175759d29909275bb1153ddc473e5180ecdcce1557854e done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [ingest-occurrences] resolving provenance for metadata file
+#11 DONE 0.0s
+ ingest-occurrences  Built
+time="2026-06-16T15:34:29+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [ingest-profiles internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [ingest-profiles internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [ingest-profiles internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [ingest-profiles internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ingest-profiles 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [ingest-profiles internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [ingest-profiles 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 CACHED
+
+#7 [ingest-profiles 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [ingest-profiles 3/5] COPY . /usr/src/sentry
+#8 CACHED
+
+#9 [ingest-profiles 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [ingest-profiles] exporting to image
+#10 exporting layers done
+#10 writing image sha256:d3d4c6e8058f482bd0186b53507c10cdf1cdac308f69e10079fbc255cb5aa7a6 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [ingest-profiles] resolving provenance for metadata file
+#11 DONE 0.0s
+ ingest-profiles  Built
+time="2026-06-16T15:34:30+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [monitors-clock-tick internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [monitors-clock-tick internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [monitors-clock-tick internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [monitors-clock-tick 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [monitors-clock-tick internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [monitors-clock-tick 3/5] COPY . /usr/src/sentry
+#6 CACHED
+
+#7 [monitors-clock-tick 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [monitors-clock-tick 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#8 CACHED
+
+#9 [monitors-clock-tick 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [monitors-clock-tick] exporting to image
+#10 exporting layers done
+#10 writing image sha256:bc25b9d1fbb17f1ce984063a6be73e441164fa1bac47c9c92af5368534417a02 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [monitors-clock-tick] resolving provenance for metadata file
+#11 DONE 0.0s
+ monitors-clock-tick  Built
+time="2026-06-16T15:34:30+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [post-process-forwarder-issue-platform internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [post-process-forwarder-issue-platform internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [post-process-forwarder-issue-platform internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [post-process-forwarder-issue-platform 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [post-process-forwarder-issue-platform internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [post-process-forwarder-issue-platform 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 CACHED
+
+#7 [post-process-forwarder-issue-platform 3/5] COPY . /usr/src/sentry
+#7 CACHED
+
+#8 [post-process-forwarder-issue-platform 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#8 CACHED
+
+#9 [post-process-forwarder-issue-platform 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [post-process-forwarder-issue-platform] exporting to image
+#10 exporting layers done
+#10 writing image sha256:273dcf39a8c02b037f24ba3f012b499468283fcd3f34b9aa75676fba59c0b149 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [post-process-forwarder-issue-platform] resolving provenance for metadata file
+#11 DONE 0.0s
+ post-process-forwarder-issue-platform  Built
+time="2026-06-16T15:34:31+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [subscription-consumer-eap-items internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [subscription-consumer-eap-items internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [subscription-consumer-eap-items internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [subscription-consumer-eap-items 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [subscription-consumer-eap-items internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [subscription-consumer-eap-items 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 CACHED
+
+#7 [subscription-consumer-eap-items 3/5] COPY . /usr/src/sentry
+#7 CACHED
+
+#8 [subscription-consumer-eap-items 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#8 CACHED
+
+#9 [subscription-consumer-eap-items 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [subscription-consumer-eap-items] exporting to image
+#10 exporting layers done
+#10 writing image sha256:cb1af3a51955679b5a3683dfccdfdcdc60fa1342a6b474f53049127811851cc3 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [subscription-consumer-eap-items] resolving provenance for metadata file
+#11 DONE 0.0s
+ subscription-consumer-eap-items  Built
+time="2026-06-16T15:34:31+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [subscription-consumer-generic-metrics internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [subscription-consumer-generic-metrics internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [subscription-consumer-generic-metrics internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [subscription-consumer-generic-metrics 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [subscription-consumer-generic-metrics internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [subscription-consumer-generic-metrics 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#6 CACHED
+
+#7 [subscription-consumer-generic-metrics 3/5] COPY . /usr/src/sentry
+#7 CACHED
+
+#8 [subscription-consumer-generic-metrics 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#8 CACHED
+
+#9 [subscription-consumer-generic-metrics 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [subscription-consumer-generic-metrics] exporting to image
+#10 exporting layers done
+#10 writing image sha256:259a37cf0b2e633c18205239158f1593da32e4615069cd4d6617e62c3cbc202b done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [subscription-consumer-generic-metrics] resolving provenance for metadata file
+#11 DONE 0.0s
+ subscription-consumer-generic-metrics  Built
+time="2026-06-16T15:34:32+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [process-spans internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [process-spans internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [process-spans internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [process-spans 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [process-spans internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [process-spans 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 CACHED
+
+#7 [process-spans 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [process-spans 3/5] COPY . /usr/src/sentry
+#8 CACHED
+
+#9 [process-spans 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [process-spans] exporting to image
+#10 exporting layers done
+#10 writing image sha256:b0fab00f49be0d3556926f48da47afb4fa9c24c9349d5622a4b3308c85ebc4c3 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [process-spans] resolving provenance for metadata file
+#11 DONE 0.0s
+ process-spans  Built
+time="2026-06-16T15:34:32+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [taskscheduler internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [taskscheduler internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [taskscheduler internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [taskscheduler 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [taskscheduler internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [taskscheduler 3/5] COPY . /usr/src/sentry
+#6 CACHED
+
+#7 [taskscheduler 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#7 CACHED
+
+#8 [taskscheduler 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#8 CACHED
+
+#9 [taskscheduler 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [taskscheduler] exporting to image
+#10 exporting layers done
+#10 writing image sha256:06eaf505d6c0e7590a906bb63306a6420e1a61622ee61926cf26c118d484debe done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [taskscheduler] resolving provenance for metadata file
+#11 DONE 0.0s
+ taskscheduler  Built
+time="2026-06-16T15:34:33+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [metrics-consumer internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [metrics-consumer internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [metrics-consumer internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [metrics-consumer internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [metrics-consumer 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [metrics-consumer internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [metrics-consumer 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#6 CACHED
+
+#7 [metrics-consumer 3/5] COPY . /usr/src/sentry
+#7 CACHED
+
+#8 [metrics-consumer 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#8 CACHED
+
+#9 [metrics-consumer 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [metrics-consumer] exporting to image
+#10 exporting layers done
+#10 writing image sha256:44d64453a2534b672be96a5a34abcd61e03278f0059542c6e1e2a6f2dcf57476 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [metrics-consumer] resolving provenance for metadata file
+#11 DONE 0.0s
+ metrics-consumer  Built
+time="2026-06-16T15:34:33+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [billing-metrics-consumer internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [billing-metrics-consumer internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [billing-metrics-consumer internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [billing-metrics-consumer internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [billing-metrics-consumer 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [billing-metrics-consumer internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [billing-metrics-consumer 3/5] COPY . /usr/src/sentry
+#6 CACHED
+
+#7 [billing-metrics-consumer 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#7 CACHED
+
+#8 [billing-metrics-consumer 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#8 CACHED
+
+#9 [billing-metrics-consumer 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [billing-metrics-consumer] exporting to image
+#10 exporting layers done
+#10 writing image sha256:9dfa3e842a554ac4ef11fcbf605b1fb8b6e331d5f68bbb67df126ed393e007a3 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [billing-metrics-consumer] resolving provenance for metadata file
+#11 DONE 0.0s
+ billing-metrics-consumer  Built
+time="2026-06-16T15:34:34+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [sentry-cleanup internal] load build definition from Dockerfile
+#1 transferring dockerfile: 688B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${BASE_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [sentry-cleanup internal] load metadata for docker.io/library/sentry-self-hosted-local:latest
+#2 DONE 0.0s
+
+#3 [sentry-cleanup internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [sentry-cleanup internal] load build context
+#4 transferring context: 658B done
+#4 DONE 0.0s
+
+#5 [sentry-cleanup 1/7] FROM docker.io/library/sentry-self-hosted-local:latest
+#5 DONE 0.1s
+
+#6 [sentry-cleanup 2/7] RUN if [ -n "${HTTP_PROXY}" ]; then echo "Acquire::http::proxy "${HTTP_PROXY}";" >> /etc/apt/apt.conf; fi
+#6 DONE 0.2s
+
+#7 [sentry-cleanup 3/7] RUN if [ -n "${HTTPS_PROXY}" ]; then echo "Acquire::https::proxy "${HTTPS_PROXY}";" >> /etc/apt/apt.conf; fi
+#7 DONE 0.2s
+
+#8 [sentry-cleanup 4/7] RUN if [ -n "${http_proxy}" ]; then echo "Acquire::http::proxy "${http_proxy}";" >> /etc/apt/apt.conf; fi
+#8 DONE 0.2s
+
+#9 [sentry-cleanup 5/7] RUN if [ -n "${https_proxy}" ]; then echo "Acquire::https::proxy "${https_proxy}";" >> /etc/apt/apt.conf; fi
+#9 DONE 0.2s
+
+#10 [sentry-cleanup 6/7] RUN apt-get update && apt-get install -y --no-install-recommends cron &&     rm -r /var/lib/apt/lists/*
+#10 0.348 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#10 0.499 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#10 0.601 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+#10 0.659 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+#10 9.513 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#10 9.558 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [311 kB]
+#10 10.34 Fetched 9363 kB in 10s (928 kB/s)
+#10 10.34 Reading package lists...
+#10 10.72 Reading package lists...
+#10 11.09 Building dependency tree...
+#10 11.18 Reading state information...
+#10 11.27 The following additional packages will be installed:
+#10 11.27   cron-daemon-common sensible-utils
+#10 11.27 Suggested packages:
+#10 11.27   anacron logrotate checksecurity
+#10 11.27 Recommended packages:
+#10 11.27   default-mta | mail-transport-agent
+#10 11.30 The following NEW packages will be installed:
+#10 11.31   cron cron-daemon-common sensible-utils
+#10 11.40 0 upgraded, 3 newly installed, 0 to remove and 31 not upgraded.
+#10 11.40 Need to get 105 kB of archives.
+#10 11.40 After this operation, 325 kB of additional disk space will be used.
+#10 11.40 Get:1 http://deb.debian.org/debian bookworm/main amd64 cron-daemon-common all 3.0pl1-162 [12.7 kB]
+#10 11.43 Get:2 http://deb.debian.org/debian bookworm/main amd64 sensible-utils all 0.0.17+nmu1 [19.0 kB]
+#10 11.44 Get:3 http://deb.debian.org/debian bookworm/main amd64 cron amd64 3.0pl1-162 [73.1 kB]
+#10 11.59 debconf: delaying package configuration, since apt-utils is not installed
+#10 11.62 Fetched 105 kB in 0s (600 kB/s)
+#10 11.64 Selecting previously unselected package cron-daemon-common.
+#10 11.64 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6650 files and directories currently installed.)
+#10 11.66 Preparing to unpack .../cron-daemon-common_3.0pl1-162_all.deb ...
+#10 11.66 Unpacking cron-daemon-common (3.0pl1-162) ...
+#10 11.70 Selecting previously unselected package sensible-utils.
+#10 11.70 Preparing to unpack .../sensible-utils_0.0.17+nmu1_all.deb ...
+#10 11.70 Unpacking sensible-utils (0.0.17+nmu1) ...
+#10 11.74 Setting up cron-daemon-common (3.0pl1-162) ...
+#10 11.79 Adding group `crontab' (GID 101) ...
+#10 11.81 Done.
+#10 11.84 Selecting previously unselected package cron.
+#10 11.84 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6695 files and directories currently installed.)
+#10 11.85 Preparing to unpack .../cron_3.0pl1-162_amd64.deb ...
+#10 11.85 Unpacking cron (3.0pl1-162) ...
+#10 11.89 Setting up sensible-utils (0.0.17+nmu1) ...
+#10 11.90 Setting up cron (3.0pl1-162) ...
+#10 11.94 invoke-rc.d: could not determine current runlevel
+#10 11.94 invoke-rc.d: policy-rc.d denied execution of start.
+#10 DONE 12.1s
+
+#11 [sentry-cleanup 7/7] COPY entrypoint.sh /entrypoint.sh
+#11 DONE 0.0s
+
+#12 [sentry-cleanup] exporting to image
+#12 exporting layers 0.1s done
+#12 writing image sha256:7348c30132f32a06a36934d824857acb24b87f21418f354c08d3547b4829d615 done
+#12 naming to docker.io/library/sentry-cleanup-self-hosted-local done
+#12 DONE 0.1s
+
+#13 [sentry-cleanup] resolving provenance for metadata file
+#13 DONE 0.0s
+ sentry-cleanup  Built
+time="2026-06-16T15:34:48+08:00" level=warning msg="Docker Compose is configured to build using Bake, but buildx isn't installed"
+#0 building with "default" instance using docker driver
+
+#1 [transactions-consumer internal] load build definition from Dockerfile
+#1 transferring dockerfile: 553B done
+#1 WARN: InvalidDefaultArgInFrom: Default value for ARG ${SENTRY_IMAGE} results in empty or invalid base image name (line 2)
+#1 DONE 0.0s
+
+#2 [transactions-consumer internal] load metadata for ghcr.io/getsentry/sentry:26.6.0
+#2 DONE 0.0s
+
+#3 [transactions-consumer internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [transactions-consumer 1/5] FROM ghcr.io/getsentry/sentry:26.6.0
+#4 DONE 0.0s
+
+#5 [transactions-consumer internal] load build context
+#5 transferring context: 299B done
+#5 DONE 0.0s
+
+#6 [transactions-consumer 2/5] RUN pip install https://github.com/getsentry/sentry-nodestore-s3/archive/main.zip
+#6 CACHED
+
+#7 [transactions-consumer 3/5] COPY . /usr/src/sentry
+#7 CACHED
+
+#8 [transactions-consumer 4/5] RUN if [ -s /usr/src/sentry/enhance-image.sh ]; then     /usr/src/sentry/enhance-image.sh;     fi
+#8 CACHED
+
+#9 [transactions-consumer 5/5] RUN if [ -s /usr/src/sentry/requirements.txt ]; then     echo "sentry/requirements.txt is deprecated, use sentry/enhance-image.sh - see https://develop.sentry.dev/self-hosted/#enhance-sentry-image";     pip install -r /usr/src/sentry/requirements.txt;     fi
+#9 CACHED
+
+#10 [transactions-consumer] exporting to image
+#10 exporting layers done
+#10 writing image sha256:a983cd62cf3cc3b860a750edd888de21f4db43560e3dc752f1289c1da5a05d57 done
+#10 naming to docker.io/library/sentry-self-hosted-local done
+#10 DONE 0.0s
+
+#11 [transactions-consumer] resolving provenance for metadata file
+#11 DONE 0.0s
+ transactions-consumer  Built
+
+Docker images built.
+
+▶ Bootstrapping seaweedfs (node store)...
+ Container sentry-self-hosted-seaweedfs-1  Creating
+ Container sentry-self-hosted-postgres-1  Creating
+ Container sentry-self-hosted-postgres-1  Created
+ Container sentry-self-hosted-seaweedfs-1  Created
+ Container sentry-self-hosted-postgres-1  Starting
+ Container sentry-self-hosted-seaweedfs-1  Starting
+ Container sentry-self-hosted-postgres-1  Started
+ Container sentry-self-hosted-seaweedfs-1  Started
+ Container sentry-self-hosted-postgres-1  Waiting
+ Container sentry-self-hosted-seaweedfs-1  Waiting
+ Container sentry-self-hosted-postgres-1  Healthy
+ Container sentry-self-hosted-seaweedfs-1  Healthy
+( 1/26) Installing libbz2 (1.0.8-r6)
+( 2/26) Installing libexpat (2.7.5-r0)
+( 3/26) Installing libffi (3.5.2-r0)
+( 4/26) Installing gdbm (1.26-r0)
+( 5/26) Installing xz-libs (5.8.3-r0)
+( 6/26) Installing libgcc (15.2.0-r2)
+( 7/26) Installing libstdc++ (15.2.0-r2)
+( 8/26) Installing mpdecimal (4.0.1-r0)
+( 9/26) Installing ncurses-terminfo-base (6.5_p20251123-r0)
+(10/26) Installing libncursesw (6.5_p20251123-r0)
+(11/26) Installing libpanelw (6.5_p20251123-r0)
+(12/26) Installing readline (8.3.1-r0)
+(13/26) Installing sqlite-libs (3.51.2-r0)
+(14/26) Installing python3 (3.12.13-r0)
+(15/26) Installing python3-pycache-pyc0 (3.12.13-r0)
+(16/26) Installing pyc (3.12.13-r0)
+(17/26) Installing s3cmd-pyc (2.4.0-r1)
+(18/26) Installing python3-pyc (3.12.13-r0)
+(19/26) Installing py3-six (1.17.0-r0)
+(20/26) Installing py3-six-pyc (1.17.0-r0)
+(21/26) Installing py3-dateutil (2.9.0-r2)
+(22/26) Installing py3-dateutil-pyc (2.9.0-r2)
+(23/26) Installing libmagic (5.46-r2)
+(24/26) Installing py3-magic (0.4.27-r3)
+(25/26) Installing py3-magic-pyc (0.4.27-r3)
+(26/26) Installing s3cmd (2.4.0-r1)
+Executing busybox-1.37.0-r30.trigger
+OK: 64.1 MiB in 55 packages
+Node store already exists, skipping creation...
+Making sure the bucket lifecycle policy is all set up correctly...
+s3://nodestore/: Lifecycle Policy updated
+<?xml version="1.0" ?>
+<LifecycleConfiguration>
+	<Rule>
+		<Status>Enabled</Status>
+		<Prefix/>
+		<Expiration>
+			<Days>90</Days>
+		</Expiration>
+	</Rule>
+</LifecycleConfiguration>
+
+
+▶ Bootstrapping and migrating Snuba ...
+ Container sentry-self-hosted-kafka-1  Creating
+ Container sentry-self-hosted-redis-1  Creating
+ Container sentry-self-hosted-clickhouse-1  Creating
+ Container sentry-self-hosted-clickhouse-1  Created
+ Container sentry-self-hosted-redis-1  Created
+ Container sentry-self-hosted-kafka-1  Created
+ Container sentry-self-hosted-redis-1  Starting
+ Container sentry-self-hosted-kafka-1  Starting
+ Container sentry-self-hosted-clickhouse-1  Starting
+ Container sentry-self-hosted-redis-1  Started
+ Container sentry-self-hosted-clickhouse-1  Started
+ Container sentry-self-hosted-kafka-1  Started
+2026-06-16 07:35:10,751 Initializing Snuba...
+2026-06-16 07:35:15,149 Snuba initialization took 4.399207859300077s
+2026-06-16 07:35:15,744 Initializing Snuba...
+2026-06-16 07:35:20,096 Snuba initialization took 4.353010723367333s
+2026-06-16 07:35:20,101 Attempting to connect to Kafka (attempt 0)...
+2026-06-16 07:35:20,163 Connected to Kafka on attempt 0
+2026-06-16 07:35:20,213 Creating Kafka topics...
+{"module": "snuba.migrations.runner", "event": "Running migration: 0011_add_quantity64", "severity": "info", "timestamp": "2026-06-16T07:35:20.287470Z"}
+{"module": "snuba.migrations.operations", "event": "Executing op: ALTER TABLE outcomes_raw_local ADD COLUMN IF NOT EXISTS quantity64 UInt64 AFTER quantity;", "severity": "info", "timestamp": "2026-06-16T07:35:20.291747Z"}
+{"module": "snuba.migrations.operations", "event": "Executing on local node: clickhouse:9000", "severity": "info", "timestamp": "2026-06-16T07:35:20.291818Z"}
+{"module": "snuba.migrations.runner", "event": "Finished: 0011_add_quantity64", "severity": "info", "timestamp": "2026-06-16T07:35:20.295383Z"}
+{"module": "snuba.migrations.runner", "event": "Running migration: 0012_add_group_id_bloom_filter_index", "severity": "info", "timestamp": "2026-06-16T07:35:20.303953Z"}
+{"module": "snuba.migrations.operations", "event": "Executing op: ALTER TABLE search_issues_local_v2 ADD INDEX IF NOT EXISTS bf_group_id group_id TYPE bloom_filter GRANULARITY 1;", "severity": "info", "timestamp": "2026-06-16T07:35:20.307928Z"}
+{"module": "snuba.migrations.operations", "event": "Executing on local node: clickhouse:9000", "severity": "info", "timestamp": "2026-06-16T07:35:20.307996Z"}
+{"module": "snuba.migrations.runner", "event": "Finished: 0012_add_group_id_bloom_filter_index", "severity": "info", "timestamp": "2026-06-16T07:35:20.313958Z"}
+{"module": "snuba.migrations.runner", "event": "Running migration: 0055_fix_attribute_keys_hash_missing_bool", "severity": "info", "timestamp": "2026-06-16T07:35:20.323251Z"}
+{"module": "snuba.migrations.operations", "event": "Executing op: ALTER TABLE eap_item_co_occurring_attrs_1_local MODIFY COLUMN attribute_keys_hash Array(UInt64) MATERIALIZED arrayMap(k -> cityHash64(k), arrayDistinct(arrayConcat(attributes_string, attributes_float, attributes_bool)));", "severity": "info", "timestamp": "2026-06-16T07:35:20.327588Z"}
+{"module": "snuba.migrations.operations", "event": "Executing on local node: clickhouse:9000", "severity": "info", "timestamp": "2026-06-16T07:35:20.327657Z"}
+{"module": "snuba.migrations.runner", "event": "Finished: 0055_fix_attribute_keys_hash_missing_bool", "severity": "info", "timestamp": "2026-06-16T07:35:20.332175Z"}
+{"module": "snuba.migrations.runner", "event": "Running migration: 0056_eap_items_dist_ro", "severity": "info", "timestamp": "2026-06-16T07:35:20.339177Z"}
+{"module": "snuba.migrations.runner", "event": "Finished: 0056_eap_items_dist_ro", "severity": "info", "timestamp": "2026-06-16T07:35:20.343594Z"}
+
+▶ Ensuring proper PostgreSQL version ...
+
+▶ Ensuring correct permissions on profiles directory ...
+Ownership of /var/vroom/sentry-profiles is already set to vroom:vroom. Skipping chown.
+
+▶ Bootstrapping seaweedfs (profiles)...
+ Container sentry-self-hosted-seaweedfs-1  Running
+ Container sentry-self-hosted-seaweedfs-1  Waiting
+ Container sentry-self-hosted-seaweedfs-1  Healthy
+OK: 64.1 MiB in 55 packages
+'profiles' bucket already exists on SeaweedFS. Skipping creation.
+s3://profiles/: Lifecycle Policy updated
+Making sure the bucket lifecycle policy is all set up correctly...
+<?xml version="1.0" ?>
+<LifecycleConfiguration>
+	<Rule>
+		<Status>Enabled</Status>
+		<Prefix/>
+		<Expiration>
+			<Days>90</Days>
+		</Expiration>
+	</Rule>
+</LifecycleConfiguration>
+
+
+▶ Setting up / migrating database ...
+ Container sentry-self-hosted-postgres-1  Running
+ Container sentry-self-hosted-postgres-1  Waiting
+ Container sentry-self-hosted-postgres-1  Healthy
+ Container sentry-self-hosted-postgres-1  Running
+ Container sentry-self-hosted-pgbouncer-1  Creating
+ Container sentry-self-hosted-pgbouncer-1  Created
+ Container sentry-self-hosted-postgres-1  Waiting
+ Container sentry-self-hosted-postgres-1  Healthy
+ Container sentry-self-hosted-pgbouncer-1  Starting
+ Container sentry-self-hosted-pgbouncer-1  Started
+ Container sentry-self-hosted-postgres-1  Waiting
+ Container sentry-self-hosted-pgbouncer-1  Waiting
+ Container sentry-self-hosted-postgres-1  Healthy
+ Container sentry-self-hosted-pgbouncer-1  Healthy
+ Container sentry-self-hosted-symbolicator-1  Creating
+ Container sentry-self-hosted-smtp-1  Creating
+ Container sentry-self-hosted-redis-1  Running
+ Container sentry-self-hosted-memcached-1  Creating
+ Container sentry-self-hosted-postgres-1  Running
+ Container sentry-self-hosted-kafka-1  Running
+ Container sentry-self-hosted-seaweedfs-1  Running
+ Container sentry-self-hosted-clickhouse-1  Running
+ Container sentry-self-hosted-pgbouncer-1  Running
+ Container sentry-self-hosted-snuba-api-1  Creating
+ Container sentry-self-hosted-symbolicator-1  Created
+ Container sentry-self-hosted-smtp-1  Created
+ Container sentry-self-hosted-snuba-api-1  Created
+ Container sentry-self-hosted-memcached-1  Created
+ Container sentry-self-hosted-postgres-1  Waiting
+ Container sentry-self-hosted-memcached-1  Starting
+ Container sentry-self-hosted-symbolicator-1  Starting
+ Container sentry-self-hosted-smtp-1  Starting
+ Container sentry-self-hosted-redis-1  Waiting
+ Container sentry-self-hosted-clickhouse-1  Waiting
+ Container sentry-self-hosted-kafka-1  Waiting
+ Container sentry-self-hosted-memcached-1  Started
+ Container sentry-self-hosted-symbolicator-1  Started
+ Container sentry-self-hosted-smtp-1  Started
+ Container sentry-self-hosted-postgres-1  Healthy
+ Container sentry-self-hosted-redis-1  Healthy
+ Container sentry-self-hosted-clickhouse-1  Healthy
+ Container sentry-self-hosted-kafka-1  Healthy
+ Container sentry-self-hosted-snuba-api-1  Starting
+ Container sentry-self-hosted-snuba-api-1  Started
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+Error opening GeoIP database: /geoip/GeoLite2-City.mmdb
+Error opening GeoIP database in Rust: /geoip/GeoLite2-City.mmdb
+Checking for migrations to run for default
+Running migrations for default
+Operations to perform:
+  Apply all migrations: auth, contenttypes, discover, explore, feedback, flags, hybridcloud, insights, monitors, nodestore, notifications, preprod, releases, replays, seer, sentry, sessions, sites, social_auth, tempest, uptime, workflow_engine
+Running migrations:
+  Applying hybridcloud.0029_remove_orgslugreservationreplica_pending... OK
+  Applying hybridcloud.0030_remove_orgslugreservationreplica_delete... OK
+  Applying sentry.1097_add_new_unique_constraints... OK
+  Applying sentry.1098_remove_old_fks... OK
+  Applying sentry.1099_drop_old_fk_columns... OK
+  Applying notifications.0009_clean_old_notificationmessage... OK
+  Applying notifications.0010_remove_metric_alert_columns_notificationmessage... OK
+  Applying notifications.0011_pending_delete_metric_alert_cols_notifmsg... OK
+  Applying notifications.0012_drop_metric_alert_cols_notificationmessage... OK
+  Applying preprod.0029_add_snapshot_comparison_chunks_columns... OK
+  Applying preprod.0030_add_images_errored_to_snapshot_comparison... OK
+  Applying sentry.1100_add_relocation_file_bucket_path... OK
+  Applying sentry.1101_remove_email_model_pending... OK
+  Applying sentry.1102_activity_project_type_index... OK
+  Applying sentry.1103_backfill_auto_link_repos_by_name...Organizations
+07:36:05 [INFO] sentry.migrations.1103_backfill_auto_link_repos_by_name: backfill_auto_link_repos.dry_run_complete (total_matched=0)
+ OK
+  Applying sentry.1104_remove_email_model_drop... OK
+  Applying sentry.1105_pr_merge_metrics... OK
+  Applying sentry.1106_pullrequest_head_commit_sha_index... OK
+  Applying sentry.1107_commitauthor_public_email_queried_at... OK
+  Applying sentry.1108_drop_organizationmapping_codecov_access_pending... OK
+  Applying sentry.1109_add_group_action_log_entry... OK
+  Applying sentry.1110_add_team_avatar... OK
+  Applying sentry.1111_add_index_for_group_link... OK
+  Applying sentry.1112_pullrequest_metrics_fields... OK
+  Applying sentry.1113_extend_repository_name_length... OK
+  Applying sentry.1114_extend_repository_url_length... OK
+  Applying seer.0013_add_workflow_config... OK
+  Applying seer.0014_add_new_unique_constraints... OK
+  Applying seer.0015_add_seer_run_fks... OK
+  Applying seer.0016_remove_old_fks... OK
+  Applying seer.0017_drop_old_fk_columns... OK
+  Applying seer.0018_backfill_seer_agent_run_group_id...Seer Agent Runs
+07:36:09 [INFO] sentry.seer.migrations.0018_backfill_seer_agent_run_group_id: backfill_seer_agent_run_group_id.done (linked=0 skipped_bad_value=0 skipped_missing_group=0 skipped_org_mismatch=0)
+ OK
+  Applying sentry.1115_projectdebugfile_add_objectstore_columns... OK
+  Applying workflow_engine.0114_sanitize_dynamic_form_field_choices...07:36:09 [INFO] sentry.workflow_engine.migrations.0114_sanitize_dynamic_form_field_choices: sanitize_dynamic_form_field_choices.complete (count=0 updated=0)
+ OK
+Creating missing DSNs
+Correcting Group.num_comments counter
+07:36:16 [INFO] sentry.outboxes: Executing outbox replication backfill
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: backfill_outboxes.start (remaining=1000 scheduled=0)
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='ApiKey')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='Organization')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='OrgAuthToken')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='ApiToken')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='AuthIdentity')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='AuthProvider')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='OrganizationAvatar')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='Team')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='Authenticator')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='OrganizationMember')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='UserEmail')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='User')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='UserPermission')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='UserRole')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='UserRoleUser')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='ProjectKey')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='OrganizationMemberTeam')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='OrganizationSlugReservation')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='ExternalActor')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='OrganizationIntegration')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='SentryAppInstallation')
+07:36:16 [INFO] sentry.hybridcloud.tasks.backfill_outboxes: processing_state.missing (model='SentryAppInstallationToken')
+07:36:16 [INFO] sentry.outboxes: Processing sentry.ControlOutboxs...
+07:36:16 [INFO] sentry.outboxes: Processing sentry.CellOutboxs...
+07:36:16 [INFO] sentry.outboxes: done
+
+Would you like to create a user account now? [Y/n]: 
+Run `sentry createuser` to do this later.
+
+
+▶ Migrating Postgres config to PGBouncer...
+Found pgbouncer in sentry/sentry.conf.py, I'm assuming you're good! :)
+
+▶ Setting up GeoIP integration ...
+Setting up IP address geolocation ...
+Installing (empty) IP address geolocation database ... done.
+IP address geolocation is not configured for updates.
+See https://develop.sentry.dev/self-hosted/geolocation/ for instructions.
+Error setting up IP address geolocation.
+
+
+-----------------------------------------------------------------
+
+You're all done! Run the following command to get Sentry running:
+
+  docker compose up --wait
+
+-----------------------------------------------------------------
+
